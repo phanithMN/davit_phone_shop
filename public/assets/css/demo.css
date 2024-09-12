@@ -1,0 +1,327 @@
+/*
+* demo.css
+* File include item demo only specific css only
+******************************************************************************/
+
+.menu .app-brand.demo {
+  height: 64px;
+  margin-top: 12px;
+}
+
+.app-brand-logo.demo svg {
+  width: 22px;
+  height: 38px;
+}
+
+.app-brand-text.demo {
+  font-size: 1.75rem;
+  letter-spacing: -0.5px;
+  text-transform: lowercase;
+}
+
+/* ! For .layout-navbar-fixed added fix padding top tpo .layout-page */
+/* Detached navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-horizontal):not(.layout-without-menu) .layout-page {
+  padding-top: 76px !important;
+}
+/* Default navbar */
+.layout-navbar-fixed .layout-wrapper:not(.layout-without-menu) .layout-page {
+  padding-top: 64px !important;
+}
+
+/* Navbar page z-index issue solution */
+.content-wrapper .navbar {
+  z-index: auto;
+}
+
+/*
+* Content
+******************************************************************************/
+
+.demo-blocks > * {
+  display: block !important;
+}
+
+.demo-inline-spacing > * {
+  margin: 1rem 0.375rem 0 0 !important;
+}
+
+/* ? .demo-vertical-spacing class is used to have vertical margins between elements. To remove margin-top from the first-child, use .demo-only-element class with .demo-vertical-spacing class. For example, we have used this class in forms-input-groups.html file. */
+.demo-vertical-spacing > * {
+  margin-top: 1rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-lg > * {
+  margin-top: 1.875rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-lg.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.demo-vertical-spacing-xl > * {
+  margin-top: 5rem !important;
+  margin-bottom: 0 !important;
+}
+.demo-vertical-spacing-xl.demo-only-element > :first-child {
+  margin-top: 0 !important;
+}
+
+.rtl-only {
+  display: none !important;
+  text-align: left !important;
+  direction: ltr !important;
+}
+
+[dir='rtl'] .rtl-only {
+  display: block !important;
+}
+
+/*
+* Layout demo
+******************************************************************************/
+
+.layout-demo-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+.layout-demo-placeholder img {
+  width: 900px;
+}
+.layout-demo-info {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.header-table-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-table-list .btn {
+  height: fit-content;
+  margin: 20px;
+}
+
+.pagination-table .w-5 {
+  width: 30px;
+}
+
+.pagination-table .flex-1 {
+  display: none;
+}
+
+.pagination-table .hidden {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination-table .hidden p {
+  margin: 0 !important;
+}
+
+
+.icon-media .bxl-google {
+  font-size: 27px;
+}
+
+.icon-media .bxl-facebook-circle {
+  font-size: 25px;
+}
+
+.text-muted {
+  color: #7d879c !important;
+}
+
+.font-size-sm {
+  font-size: .875rem !important;
+}
+
+.font-family {
+  font-family: "Poppins", "Hanuman";
+}
+
+.card-title .bg-raduis-icon {
+  background-color: #71dd3740;
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+} 
+
+.card-title .bg-raduis-icon i {
+  color: #71dd37;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.categories-color i {
+  color: #696cff !important;
+}
+
+.accessaries-color i {
+  color: #20aca7 !important
+}
+
+.accessaries-color {
+  background-color: #20aca729 !important;
+}
+
+.brand-color i {
+  color: #cb9904 !important
+}
+
+.brand-color {
+  background-color: #cb990429 !important;
+}
+
+.categories-color {
+  background-color: #696cff29 !important;
+}
+
+.blog-color i {
+  color: #9900b4 !important;
+}
+
+.user-color i {
+  color: #f144c7 !important;
+}
+.user-color {
+  background-color: #f144c729 !important
+}
+
+.blog-color {
+  background-color: #9900b429 !important;
+}
+
+.total-sale-color {
+  background-color: #14eec629 !important;
+}
+
+.total-sale-color i {
+  color: #14eec6 !important;
+}
+
+.header-filter-table {
+  padding: 0;
+  justify-content: space-between; 
+  margin: 0;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.header-filter-table .filter-control,
+.header-filter-table .row-leng {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.header-filter-table .btn-filter:not(:last-child) {
+  margin-right: 10px;
+}
+
+.header-filter-table .form-head-bar-controll {
+  width: 13%;
+}
+
+.header-filter-table .content-form-control {
+  width: 100%;
+}
+
+
+.header-filter-table .content-form-control:not(:last-child) {
+  margin-right: 20px;
+}
+
+.header-filter-table .select-length {
+  margin: 0 5px;
+}
+
+.status-color-type {
+  border-radius: 6px;
+  padding: 5px 6px;
+  text-transform: capitalize;
+  font-size: 12px;
+}
+.color-new-product {
+  color: #71dd37;
+  background-color: #71dd3729;
+}
+
+.color-feature {
+  color: #cb9904;
+  background-color: #cb990429;
+}
+
+.color-best-deal {
+  color: #20aca7;
+  background-color: #20aca729;
+}
+
+.filter-control {
+  justify-content: end;
+}
+
+.filter-control select {
+  width: 20%;
+  margin-right: 10px;
+}
+
+.no-data-response {
+  padding: 100px;
+  text-align: center;
+  font-weight: 600;
+  color: #beb6b6;
+  padding: 100px !important;
+}
+
+.table > :not(caption) > * > * {
+  text-transform: capitalize;
+}
+
+.select2-container .select2-selection--single {
+  height: 37px !important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  padding-top: 4px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 35px !important;
+}
+
+.bg-total {
+  background: #f9bf8f;
+}
+
+.bg-total td {
+  font-size: 16px;
+  font-weight: 600;
+  color: #616161;
+}
+
+.btn-filter .input-filter {
+  margin-right: 10px;
+  align-items: center;
+}
+
+.btn-filter .input-filter label {
+  margin-right: 5px;
+}
