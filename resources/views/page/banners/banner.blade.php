@@ -16,8 +16,6 @@
                     <th>#</th>
                     <th>Image</th>
                     <th>Title</th>
-                    <th>Type</th>
-                    <th>Badget</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -27,8 +25,6 @@
                     <th scope="row">{{$banner->id}}</th>
                     <td><img src="{{ asset('uploads/banners/' . $banner->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                     <td>{{$banner->title}}</td>
-                    <td>{{$banner->badget}}</td>
-                    <td>{{$banner->type}}</td>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
