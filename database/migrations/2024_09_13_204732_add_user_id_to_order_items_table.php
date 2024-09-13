@@ -14,7 +14,7 @@ class AddUserIdToOrderItemsTable extends Migration
     public function up()
     {
         Schema::table('order_items', function (Blueprint $table) {
-            //
+            $table->unsignedBigInteger('user_id')->nullable();
         });
     }
 
