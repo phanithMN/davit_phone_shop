@@ -15,11 +15,7 @@ class CategoryController extends Controller
         $search_value = $request->query("search");
         $rowLength = $request->query('row_length', 10);
         
-        $categories = DB::table('categories')
-        ->join('products_type', 'categories.product_type', '=', 'products_type.id') 
-        ->select('categories.*', 'products_type.name as products_type_name')
-        ->where('categories.name', 'like', '%'.$request->input('search').'%')
-        ->where('products_type.name', 'like', '%'.$request->input('product_type').'%')
+        $categories = Category::where('categories.name', 'like', '%'.$request->input('search').'%')
         ->paginate($rowLength);
 
         return view('page.categories.index', [
@@ -37,7 +33,6 @@ class CategoryController extends Controller
     public function InsertData(Request $request) {
         $categories = new Category();
         $categories->name = $request->input('name');
-        $categories->product_type = $request->input('product_type');
         $categories->save();
         return redirect()->route('category')->with('message', 'Categories Inserted Successfully');
     }
@@ -52,7 +47,6 @@ class CategoryController extends Controller
     public function DataUpdate(Request $request, $id) {
         $category = Category::find($id);
         $category->name = $request->input('name');
-        $category->product_type = $request->input('product_type');
         $category->update();
         
         return redirect()->route('category')->with('message','Category Updated Successfully');

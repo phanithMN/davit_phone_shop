@@ -8,7 +8,10 @@ use App\Models\Brand;
 class BrandController extends Controller
 {
     public function brand(Request $request) {
-        $brands = Brand::paginate(10);
+        
+        $rowLength = $request->query('row_length', 10);
+        $brands = Brand::paginate($rowLength);
+
         return view('page.brands.index', ['brands'=>$brands]);
     }
 

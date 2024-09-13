@@ -34,21 +34,8 @@
             </div>
            
             <div class="col-sm-12 col-md-10 d-flex filter-control">
-              <select class="form-select form-select-sm" id="product_type" name="product_type">
-                <option value="">Chosse Product Type</option>
-                @foreach ($products_type as $product_type )
-                  <option value="{{$product_type->name}}" {{ request('product_type') == $product_type->name ? 'selected' : '' }}>{{$product_type->name}}</option>
-                @endforeach
-              </select>
-              <script>
-                document.getElementById('product_type').addEventListener('change', function() {
-                    let value = this.value;
-                    let url = new URL(window.location.href);
-                    url.searchParams.set('product_type', value);
-                    window.location.href = url.toString();
-                });
-              </script>
-              <form action="{{ route('category') }}" method="GET" class="d-flex">
+              
+              <form action="{{ route('category') }}" method="GET" class="d-flex" id="search">
                 @csrf
                 <input 
                 type="search" 
@@ -57,6 +44,7 @@
                 placeholder="Search..." 
                 aria-label="Search..." 
                 value="{{$search_value}}"
+                onchange="document.getElementById('search').submit();" 
                 />
               </form>
             </div>
@@ -64,10 +52,9 @@
           <table class="table">
             <thead>
                 <tr class="text-nowrap">
-                    <th>#</th>
-                    <th>Name Categories</th>
-                    <th>Product Type</th>
-                    <th>Action</th>
+                  <th>#</th>
+                  <th>Name Categories</th>
+                  <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,7 +62,6 @@
                 <tr>
                     <th scope="row">{{$category->id}}</th>
                     <td>{{$category->name}}</td>
-                    <td>{{$category->products_type_name}}</td>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

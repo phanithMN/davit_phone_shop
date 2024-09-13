@@ -27,15 +27,7 @@
                             />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="type" class="form-label">Products Type</label>
-                        <select class="form-select" id="type" aria-label="Default select example" name="product_type">
-                          <option value="">Chosse Prodcuts Type</option>
-                          @foreach($products_type as $product_type)
-                          <option value="{{$product_type->id}}">{{$product_type->name}}</option>
-                          @endforeach
-                        </select>
-                    </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>
                 </form>

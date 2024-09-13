@@ -10,7 +10,30 @@
             <a href="{{ route('insert.brand') }}" type="button" class="btn btn-success">Add New</a>
         </div>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+          <div class="row header-filter-table">
+            <div class="col-sm-12 col-md-2">
+              <div class="dataTables_length" id="add-row_length">
+                <label class="d-flex">
+                  Show 
+                  <select id="add_row_length" name="add_row_length" aria-controls="add-row" class="select-length form-control form-control-sm">
+                    <option value="10" {{ request('row_length') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ request('row_length') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="50" {{ request('row_length') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="100" {{ request('row_length') == 100 ? 'selected' : '' }}>100</option>
+                  </select> entries 
+                </label>
+                <script>
+                    document.getElementById('add_row_length').addEventListener('change', function() {
+                        let value = this.value;
+                        let url = new URL(window.location.href);
+                        url.searchParams.set('row_length', value);
+                        window.location.href = url.toString();
+                    });
+                </script>
+              </div>
+            </div>
+          </div>
+          <table class="table">
             <thead>
                 <tr class="text-nowrap">
                     <th>#</th>
@@ -39,7 +62,14 @@
                 </tr>
                 @endforeach
             </tbody>
-            </table>
+            <tfoot>
+              <tr>
+                <td colspan="10" class="pagination-table">
+                  {{$brands->onEachSide(1)->links()}}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
         </div>
     </div>
     <!--/ Responsive Table -->
