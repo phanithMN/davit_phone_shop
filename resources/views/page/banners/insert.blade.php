@@ -54,27 +54,6 @@
                             />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="badget">Badget</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="badget"
-                                class="form-control"
-                                id="badget"    
-                                placeholder="Insert Badeget"
-                                aria-label="Insert Badeget"
-                            />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">Select Type</label>
-                        <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" name="type">
-                          <option value="">Chosse Type</option>
-                          <option value="slide">Slide</option>
-                          <option value="feature">Feature</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>
                 </form>

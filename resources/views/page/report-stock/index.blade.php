@@ -59,7 +59,6 @@
               <div class="btn-filter btn-export">
                 <a href="#" class="btn btn-primary btn-sm">Export</a>
               </div>
-              
             </div>
           </div>
           <table class="table">

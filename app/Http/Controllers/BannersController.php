@@ -20,8 +20,6 @@ class BannersController extends Controller
         $banners = new Banners();
         $banners->title = $request->input('title');
         $banners->sub_title = $request->input('sub_title');
-        $banners->type = $request->input('type');
-        $banners->badget = $request->input('badget');
         if($request->hasFile('image'))
         {
             $file = $request->file('image');
@@ -45,8 +43,6 @@ class BannersController extends Controller
         $banner = Banners::find($id);
         $banner->title = $request->input('title');
         $banner->sub_title = $request->input('sub_title');
-        $banner->badget = $request->input('badget');
-        $banner->type = $request->input('type');
         if($request->hasFile('image'))
         {
             $destination = 'uploads/banner'. $banner->image;

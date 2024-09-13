@@ -19,7 +19,6 @@
               </div>
               <div class="col-lg-7 col-md-7">
                 <div class="slider-content content-2 text-left">
-                  <h6>{{$slide_banner->widget}}</h6>
                   <h1>{{$slide_banner->title}}</h1>
                   <p>{{$slide_banner->sub_title}}</p>
                   <div class="slide-btn small-btn">
