@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use DB;
 use Illuminate\Http\Request;
 use App\Models\Category;
-use App\Models\ProductType;
 
 class CategoryController extends Controller
 {
     public function Category(Request $request) {
-        $products_type = ProductType::all();
         $search_value = $request->query("search");
         $rowLength = $request->query('row_length', 10);
         
@@ -21,13 +17,11 @@ class CategoryController extends Controller
         return view('page.categories.index', [
             'categories'=>$categories,
             'search_value'=>$search_value,
-            'products_type'=>$products_type
         ]);
     }
 
     public function Insert() {
-        $products_type = ProductType::all();
-        return view('page.categories.insert', ['products_type'=>$products_type]);
+        return view('page.categories.insert');
     }
 
     public function InsertData(Request $request) {
@@ -39,9 +33,8 @@ class CategoryController extends Controller
 
     // update 
     public function Update($id) {
-        $products_type = ProductType::all();
         $category = Category::find($id);
-        return view('page.categories.edit', ['category'=>$category,'products_type'=>$products_type]);
+        return view('page.categories.edit', ['category'=>$category]);
     }
 
     public function DataUpdate(Request $request, $id) {
