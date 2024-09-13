@@ -28,12 +28,14 @@ class CategoryController extends Controller
         $categories = new Category();
         $categories->name = $request->input('name');
         $categories->save();
+
         return redirect()->route('category')->with('message', 'Categories Inserted Successfully');
     }
 
     // update 
     public function Update($id) {
         $category = Category::find($id);
+        
         return view('page.categories.edit', ['category'=>$category]);
     }
 
