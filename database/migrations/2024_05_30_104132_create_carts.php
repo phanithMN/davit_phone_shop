@@ -16,6 +16,7 @@ class CreateCarts extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("product_id");
+            $table->unsignedBigInteger("user_id");
             $table->string('image');
             $table->string('name');
             $table->decimal('price', 8,2);

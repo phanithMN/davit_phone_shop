@@ -25,7 +25,6 @@ class CreateProductsTable extends Migration
             $table->bigInteger('brand_id');
             $table->bigInteger('product_type');
             $table->bigInteger('accessary_id');
-            $table->bigInteger('stock_id');
             $table->timestamps();
         });
     }
