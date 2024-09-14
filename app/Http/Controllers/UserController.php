@@ -25,7 +25,6 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->input("name");
         $user->username = $request->input("username");
-        $user->address = $request->input("address");
         $user->email = $request->input("email");
         $user->password = Hash::make($request->input("password"));
         $user->phone_number = $request->input("phone_number");
@@ -55,9 +54,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->input("name");
         $user->username = $request->input("username");
-        $user->address = $request->input("address");
         $user->email = $request->input("email");
-        // $user->password = Hash::make($request->input("password"));
         $user->phone_number = $request->input("phone_number");
         if($request->hasFile('image'))
         {

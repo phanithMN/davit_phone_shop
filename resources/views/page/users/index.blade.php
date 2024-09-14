@@ -18,7 +18,6 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Address</th>
                     <th>Phone Number</th>
                     <th>Action</th>
                 </tr>

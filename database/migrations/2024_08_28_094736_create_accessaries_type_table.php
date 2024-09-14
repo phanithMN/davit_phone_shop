@@ -16,7 +16,6 @@ class CreateAccessariesTypeTable extends Migration
         Schema::create('accessaries_type', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('quantity', 8, 2);
             $table->timestamps();
         });
     }

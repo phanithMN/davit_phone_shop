@@ -80,19 +80,6 @@
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="address">Address</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="address"
-                                class="form-control"
-                                id="address"
-                                placeholder="Insert address"
-                                value="{{$user->address}}"
-                            />
-                        </div>
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label" for="phone_number">Phone Number</label>
                         <div class="input-group input-group-merge">
                             <input

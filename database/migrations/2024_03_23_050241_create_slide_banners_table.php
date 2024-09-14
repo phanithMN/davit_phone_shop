@@ -18,6 +18,7 @@ class CreateSlideBannersTable extends Migration
             $table->string('image');
             $table->string('title');
             $table->string('sub_title');
+            $table->string('type');
             $table->timestamps();
         });
     }
