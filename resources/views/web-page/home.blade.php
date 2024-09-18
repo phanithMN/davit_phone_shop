@@ -710,7 +710,7 @@
        <div class="smart-watch-active owl-carousel pb-4">
           <!-- Single Product Start -->
           @foreach($products as $product)
-            @if($product->product_type == '2')
+            @if($product->product_type_name == 'Smart Watch')
               <div class="single-ponno-product">
                 <!-- Product Image Start -->
                 <div class="pro-img">
@@ -817,7 +817,7 @@
        <div class="accessaries-active owl-carousel pb-4">
           <!-- Single Product Start -->
           @foreach($products as $product)
-            @if($product->product_type == '4')
+            @if($product->product_type_name == 'Accessories')
               <div class="single-ponno-product">
                 <!-- Product Image Start -->
                 <div class="pro-img">

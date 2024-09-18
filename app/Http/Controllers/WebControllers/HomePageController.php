@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\WebControllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Banners;
 use App\Models\Brand;
 use App\Models\Category;
@@ -12,10 +13,16 @@ use App\Models\Blog;
 
 class HomePageController extends Controller
 {
-    public function HomePage() {
+    public function HomePage(Request $request) {
 
         $slide_banners  = Banners::all();
-        $products  = Product::all();
+        $products = Product::leftJoin('products_type', 'products_type.id', '=', 'products.product_type') 
+        ->select('products.*', 'products_type.name as product_type_name')
+        ->where(function($query) use ($request) {
+            $query->where('products_type.name', 'like', '%'.$request->query("search").'%')
+                  ->orWhereNull('products_type.name');
+        })->get();
+        // dd($products);
         $features_top  = Feature::where('type', 'Feature Top')->first();
         $features_bottom  = Feature::where('type', 'Feature Bottom')->take(2)->get();
         $features_center  = Feature::where('type', 'Feature Center')->take(2)->get();
