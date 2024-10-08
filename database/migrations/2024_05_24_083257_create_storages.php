@@ -16,7 +16,6 @@ class CreateStorages extends Migration
         Schema::create('storages', function (Blueprint $table) {
             $table->id();
             $table->string('size');
-            $table->unsignedBigInteger("product_id");
             $table->timestamps();
         });
     }

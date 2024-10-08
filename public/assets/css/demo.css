@@ -325,3 +325,25 @@
 .btn-filter .input-filter label {
   margin-right: 5px;
 }
+
+.rams-blog {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.rams-blog label {
+  margin: 0;
+  margin-left: 5px;
+}
+
+.rams-blog .rams-check {
+  margin-right: 5px;
+}
+
+.colors-check {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  display: block;
+}

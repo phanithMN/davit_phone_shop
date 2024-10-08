@@ -44,7 +44,6 @@
                     <th>#</th>
                     <th>Color Code</th>
                     <th>Color Name</th>
-                    <th>Product ID</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -54,7 +53,6 @@
                     <th scope="row">{{$color->id}}</th>
                     <th scope="row">{{$color->color_code}}</th>
                     <th scope="row">{{$color->color_name}}</th>
-                    <th scope="row">{{$color->product_name}}</th>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

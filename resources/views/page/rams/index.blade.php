@@ -43,7 +43,6 @@
                 <tr class="text-nowrap">
                     <th>#</th>
                     <th>Size</th>
-                    <th>Product ID</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -52,7 +51,6 @@
                 <tr>
                     <th scope="row">{{$ram->id}}</th>
                     <th scope="row">{{$ram->size}}</th>
-                    <th scope="row">{{$ram->product_name}}</th>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

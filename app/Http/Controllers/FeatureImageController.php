@@ -26,9 +26,9 @@ class FeatureImageController extends Controller
     public function InsertData(Request $request) {
         $feature_img = new FeatureImage();
         $feature_img->product_id = $request->input('product_id');
-        if($request->hasFile('image'))
+        if($request->hasFile('thumbnails'))
         {
-            $file = $request->file('image');
+            $file = $request->file('thumbnails');
             $extension = $file->getClientOriginalExtension(); 
             $filename = time().'.'.$extension;
             $file->move('uploads/features-img', $filename);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropColumnFromAccessariesTypeTable extends Migration
+class DropColumnFromRamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class DropColumnFromAccessariesTypeTable extends Migration
      */
     public function up()
     {
-        Schema::table('accessaries_type', function (Blueprint $table) {
-            $table->dropColumn('quantity');
+        Schema::table('rams', function (Blueprint $table) {
+            $table->dropColumn('product_id');
         });
     }
 
@@ -25,7 +25,7 @@ class DropColumnFromAccessariesTypeTable extends Migration
      */
     public function down()
     {
-        Schema::table('accessaries_type', function (Blueprint $table) {
+        Schema::table('rams', function (Blueprint $table) {
             //
         });
     }

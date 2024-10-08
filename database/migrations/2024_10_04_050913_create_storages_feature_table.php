@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropColumnFromProductsTable extends Migration
+class CreateStoragesFeatureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class DropColumnFromProductsTable extends Migration
      */
     public function up()
     {
-        Schema::table('products', function (Blueprint $table) {
-            $table->dropColumn('stock_id');
+        Schema::create('storages_feature', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('storage_id');
+            $table->unsignedBigInteger('product_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class DropColumnFromProductsTable extends Migration
      */
     public function down()
     {
-        Schema::table('products', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('storages_feature');
     }
 }

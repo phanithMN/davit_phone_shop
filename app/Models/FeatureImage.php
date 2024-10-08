@@ -11,4 +11,9 @@ class FeatureImage extends Model
     public $primaryKey = 'id';
     public $incrementing = true;
     public $timestamp = false;
+    protected $fillable = ['product_id', 'image_path'];
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

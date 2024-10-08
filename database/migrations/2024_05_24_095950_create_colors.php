@@ -17,7 +17,6 @@ class CreateColors extends Migration
             $table->id();
             $table->string('color_code');
             $table->string('color_name');
-            $table->unsignedBigInteger("product_id");
             $table->timestamps();
         });
     }

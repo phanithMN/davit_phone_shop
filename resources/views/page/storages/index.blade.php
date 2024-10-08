@@ -25,15 +25,15 @@
               </div>
             </div>
             <div class="col-sm-12 col-md-10 d-flex filter-control">
-              <form action="{{ route('storage') }}" method="GET" class="d-flex">
-                @csrf
+              <form action="{{ route('storage') }}" method="GET" class="d-flex" id="search">
                 <input 
                 type="search" 
                 name="search" 
                 class="form-control form-control-sm" 
                 placeholder="Search..." 
                 aria-label="Search..." 
-                value="{{$search_value}}"
+                value="{{ request('search') }}"
+                onchange="document.getElementById('search').submit();" 
                 />
               </form>
             </div>
@@ -43,7 +43,6 @@
                 <tr class="text-nowrap">
                     <th>#</th>
                     <th>Size</th>
-                    <th>Product ID</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -52,7 +51,6 @@
                 <tr>
                     <th scope="row">{{$storage->id}}</th>
                     <th scope="row">{{$storage->size}}</th>
-                    <th scope="row">{{$storage->product_name}}</th>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

@@ -11,4 +11,10 @@ class Storage extends Model
     public $primaryKey = 'id';
     public $incrementing = true;
     public $timestamp = false;
+    protected $fillable = ['size'];
+    
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

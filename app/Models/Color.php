@@ -11,4 +11,9 @@ class Color extends Model
     public $primaryKey = 'id';
     public $incrementing = true;
     public $timestamp = false;
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }
