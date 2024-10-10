@@ -3,6 +3,9 @@ namespace App\Http\Controllers\WebControllers;
 use App\Http\Controllers\Controller;
 
 use App\Models\Accessaries;
+use App\Models\ColorFeature;
+use App\Models\RamFeature;
+use App\Models\StorageFeature;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductType;
@@ -80,12 +83,18 @@ class ProductController extends Controller
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
         $product = Product::findOrFail($id);
         $products = Product::orderBy('created_at', 'desc')->get();
-        $features_img = FeatureImage::where('product_id', $id)->get();
         $specifications = Specification::where('product_id', $id)->get();
         $softinfos = SoftInfo::where('product_id', $id)->get();
-        $rams = Ram::where('product_id', $id)->get();
-        $storages = Storage::where('product_id', $id)->get();
-        $colors = Color::where('product_id', $id)->get();
+        $features_img = FeatureImage::where('product_id', $id)->get();
+        $rams = RamFeature::join('rams', 'rams.id', '=', 'rams_feature.ram_id') 
+        ->select('rams_feature.*', 'rams.size as size')
+        ->where('product_id', $id)->get();
+        $storages = StorageFeature::join('storages', 'storages.id', '=', 'storages_feature.storage_id') 
+        ->select('storages_feature.*', 'storages.size as size')
+        ->where('product_id', $id)->get();
+        $colors = ColorFeature::join('colors', 'colors.id', '=', 'colors_feature.color_id') 
+        ->select('colors_feature.*', 'colors.color_name as color_name', 'colors.color_code as color_code')
+        ->where('product_id', $id)->get();
 
         return view('web-page.product.product-detail', [
             'product' => $product,

@@ -95,6 +95,7 @@
                 <div class="product-description-2">
                   <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                 </div>
+
                 <div class="choose-store mb-1 pt-1 {{count($rams) >= 1 ? 'd-block' : 'd-none'}}">
                   <h5 class="h7 mb-3">Choose your memory (RAM)</h5>
                   <div class="row">
@@ -135,6 +136,9 @@
                     @endforeach
                   </div>
                 </div>
+                
+
+                
                 <div class="quatity-stock">
                   <ul class="d-flex flex-wrap">
                     <label>Quantity</label>
