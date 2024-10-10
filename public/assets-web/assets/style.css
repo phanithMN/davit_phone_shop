@@ -2797,8 +2797,8 @@ p {
     padding: 25px 0;
 }
 
-.thubnail-desc h3 {
-    font-size: 24px;
+.thubnail-desc .subscription__title  {
+    font-size: 1rem !important;
 }
 
 .pro-thumb-price span:not(:last-child) {
