@@ -19,9 +19,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($products_type as $product_type)
+                @foreach($products_type as $key => $product_type)
                 <tr>
-                    <th scope="row">{{$product_type->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <td>{{$product_type->name}}</td>
                     <td>
                           <div class="dropdown">

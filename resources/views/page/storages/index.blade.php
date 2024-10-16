@@ -47,9 +47,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($storages as $storage)
+                @foreach($storages as $key => $storage)
                 <tr>
-                    <th scope="row">{{$storage->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <th scope="row">{{$storage->size}}</th>
                     <td>
                           <div class="dropdown">

@@ -27,6 +27,18 @@
                         </div>
                     </div>
                     <div class="mb-3">
+                        <label class="form-label" for="username">Username</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="text"
+                                name="username"
+                                class="form-control"
+                                id="username"
+                                placeholder="Insert username"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label" for="image">Image</label>
                         <div class="input-group input-group-merge">
                             <input
@@ -61,30 +73,7 @@
                             />
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="username">Username</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="username"
-                                class="form-control"
-                                id="username"
-                                placeholder="Insert username"
-                            />
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="phone_number">Phone Number</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="phone_number"
-                                class="form-control"
-                                id="phone_number"
-                                placeholder="Insert phone number"
-                            />
-                        </div>
-                    </div>
+                   
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>
                 </form>

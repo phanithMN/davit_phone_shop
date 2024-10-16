@@ -18,15 +18,16 @@ class ReportSaleController extends Controller
                 $request->input('end_date')
             ])
             ->where('products.name', 'like', '%'.$request->input('search').'%')
-            ->join('products', 'products.id', '=', 'order_items.product_id') 
-            ->join('products_type', 'products_type.id', '=', 'order_items.product_id') 
+            ->leftJoin('products', 'products.id', '=', 'order_items.product_id') 
+            ->leftJoin('products_type', 'products_type.id', '=', 'order_items.product_id') 
             ->select('order_items.*', 'products.name as product_name', 'products_type.name as products_type_name')
             ->paginate($rowLength);
         } else {
-            $order_items = OrderItems::join('products', 'products.id', '=', 'order_items.product_id') 
-            ->join('products_type', 'products_type.id', '=', 'order_items.product_id') 
+            $order_items = OrderItems::leftJoin('products', 'products.id', '=', 'order_items.product_id') 
+            ->leftJoin('products_type', 'products_type.id', '=', 'order_items.product_id') 
             ->select('order_items.*', 'products.name as product_name', 'products_type.name as products_type_name')
-            ->where('products.name', 'like', '%'.$request->input('search').'%')->paginate($rowLength);
+            ->where('products.name', 'like', '%'.$request->input('search').'%')
+            ->paginate($rowLength);
     
         }
 
@@ -34,5 +35,62 @@ class ReportSaleController extends Controller
         return view('page.report-sale.index',[
             'order_items' => $order_items
         ]);
+    }
+
+    public function ExportCSV()
+    {
+        $filename = 'report-sales.csv';
+
+        $headers = [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => "attachment; filename=\"$filename\"",
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0',
+        ];
+
+        return response()->stream(function () {
+            $handle = fopen('php://output', 'w');
+
+            // Add BOM (Byte Order Mark) to support special characters in Excel
+            fprintf($handle, chr(0xEF).chr(0xBB).chr(0xBF));
+
+            // Add CSV headers
+            fputcsv($handle, [
+                'ID',
+                'Date',
+                'Name',
+                'Ram',
+                'Storage',
+                'Color',
+                'Quantity',
+                'Price',
+                'Total',
+            ]);
+
+            // Fetch item data with relations in chunks to avoid memory overload
+            OrderItems::with(['product'])->chunk(25, function ($order_items) use ($handle) {
+                foreach ($order_items as $key => $item) {
+                    // Extract data from each item along with product, category, and status
+                    $data = [
+                        isset($key) ? $key : '',
+                        isset($item->created_at) ? $item->created_at->format('Y-m-d') : '',
+                        isset($item->product->name) ? $item->product->name : '', 
+                        isset($item->ram) ? $item->ram : '', 
+                        isset($item->storage) ? $item->storage : '', 
+                        isset($item->color) ? $item->color : '', 
+                        isset($item->quantity) ? $item->quantity : '0',  
+                        isset($item->price) ? '$'.number_format($item->price, 2) : '0',  
+                        isset($item->quantity) ? '$'.number_format($item->quantity * $item->price, 2) : '0', 
+                    ];
+
+                    // Write data to the CSV file, ensuring UTF-8 support
+                    fputcsv($handle, $data);
+                }
+            });
+
+            // Close CSV file handle
+            fclose($handle);
+        }, 200, $headers);
     }
 }

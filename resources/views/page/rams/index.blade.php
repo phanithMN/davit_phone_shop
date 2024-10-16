@@ -47,9 +47,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($rams as $ram)
+                @foreach($rams as $key => $ram)
                 <tr>
-                    <th scope="row">{{$ram->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <th scope="row">{{$ram->size}}</th>
                     <td>
                           <div class="dropdown">

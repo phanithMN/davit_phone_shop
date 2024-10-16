@@ -48,9 +48,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($specifications as $specification)
+                @foreach($specifications as $key => $specification)
                 <tr>
-                    <th scope="row">{{$specification->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <th scope="row">{{$specification->title}}</th>
                     <th scope="row">{{$specification->product_name}}</th>
                     <td>

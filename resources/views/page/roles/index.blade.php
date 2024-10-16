@@ -19,9 +19,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($roles as $item)
+                @foreach($roles as $key => $item)
                 <tr>
-                    <td>{{$item->id}}</td>
+                    <td>{{$key}}</td>
                     <td>{{$item->name}}</td>
                     <td>
                       <div class="dropdown">

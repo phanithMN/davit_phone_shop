@@ -165,7 +165,10 @@ Route::put('/edit-data-admin-coupon/{id}', [App\Http\Controllers\CouponControlle
 Route::get('/delete-admin-coupon/{id}', [App\Http\Controllers\CouponController::class, 'Delete'])->name('delete-admin-coupon');
 //report stock
 Route::get('/report-stock', [App\Http\Controllers\ReportStockController::class, 'ReportStock'])->name('report-stock');
+Route::get('/export-stock', [App\Http\Controllers\ReportStockController::class, 'ExportCSV'])->name('export-stock');
+// report sale 
 Route::get('/report-sale', [App\Http\Controllers\ReportSaleController::class, 'ReportSale'])->name('report-sale');
+Route::get('/export-sale', [App\Http\Controllers\ReportSaleController::class, 'ExportCSV'])->name('export-sale');
 // user
 Route::get('/user', [App\Http\Controllers\UserController::class, 'User'])->name('user');
 Route::get('/insert-user', [App\Http\Controllers\UserController::class, 'Insert'])->name('insert-user');

@@ -21,4 +21,9 @@ class OrderItems extends Model
         'storage',
         'color',
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

@@ -20,9 +20,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($banners as $banner)
+                @foreach($banners as $key => $banner)
                 <tr>
-                    <th scope="row">{{$banner->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <td><img src="{{ asset('uploads/banners/' . $banner->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                     <td>{{$banner->title}}</td>
                     <td>

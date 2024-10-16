@@ -21,9 +21,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($features as $feature)
+                @foreach($features as $key => $feature)
                 <tr>
-                    <th scope="row">{{$feature->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <td><img src="{{ asset('uploads/features/' . $feature->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                     <td>{{$feature->title}}</td>
                     <td>{{$feature->type}}</td>

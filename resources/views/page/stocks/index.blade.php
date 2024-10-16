@@ -53,9 +53,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($stocks as $stock)
+                @foreach($stocks as $key => $stock)
                 <tr>
-                  <td>{{$stock->id}}</td>
+                  <td>{{$key}}</td>
                   <td>{{$stock->sku}}</td>
                   <td>{{$stock->product_name}}</td>
                   <td>{{$stock->item_name}}</td>

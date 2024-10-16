@@ -48,9 +48,9 @@
               </tr>
           </thead>
           <tbody>
-              @foreach($features_img as $feature_img)
+              @foreach($features_img as $key => $feature_img)
               <tr>
-                  <th scope="row">{{$feature_img->id}}</th>
+                  <th scope="row">{{$key}}</th>
                   <th scope="row">{{$feature_img->product_name}}</th>
                   <td><img src="{{ asset('uploads/features-img/' . $feature_img->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                   <td>

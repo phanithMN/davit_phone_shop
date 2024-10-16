@@ -16,24 +16,21 @@
                     <th>#</th>
                     <th>image</th>
                     <th>Name</th>
-                    <th>Email</th>
                     <th>Username</th>
-                    <th>Phone Number</th>
+                    <th>Email</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($users as $user)
+                @foreach($users as $key => $user)
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <th scope="row">
                       <img src="{{ asset('uploads/users/' . $user->image) }}" alt="banner" style="width: 30px;height: auto;">
                     </th>
                     <th scope="row">{{$user->name}}</th>
-                    <th scope="row">{{$user->email}}</th>
                     <th scope="row">{{$user->username}}</th>
-                    <th scope="row">{{$user->address}}</th>
-                    <th scope="row">{{$user->phone_number}}</th>
+                    <th scope="row">{{$user->email}}</th>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

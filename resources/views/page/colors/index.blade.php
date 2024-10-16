@@ -48,9 +48,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($colors as $color)
+                @foreach($colors as $key => $color)
                 <tr>
-                    <th scope="row">{{$color->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <th scope="row">{{$color->color_code}}</th>
                     <th scope="row">{{$color->color_name}}</th>
                     <td>

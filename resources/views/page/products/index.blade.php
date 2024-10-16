@@ -117,9 +117,9 @@
                   <td colspan="11" class="no-data-response">No Data Response</td>
                 </tr>
               @else
-                @foreach($products as $product)
+                @foreach($products as $key => $product)
                   <tr>
-                    <td>{{$product->id}}</td>
+                    <td>{{$key}}</td>
                     <td><img src="{{ asset('uploads/products/' . $product->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                     <td>{{$product->name}}</td>
                     <td>${{number_format($product->price, 2)}}</td>  

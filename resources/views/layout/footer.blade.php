@@ -6,26 +6,10 @@
         <script>
           document.write(new Date().getFullYear());
         </script>
+        <a href="https://www.facebook.com/profile.php?id=100013282053134" target="_blank" class="footer-link fw-bolder">DAVIT PHONE SHOP</a>
         , made with ❤️ by
-        <a href="#" target="_blank" class="footer-link fw-bolder">mn phanith</a>
+        <a href="https://www.facebook.com/mnphanith" target="_blank" class="footer-link fw-bolder">MN PHANITH</a>
       </div>
-      {{-- <div>
-        <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-        <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
-
-        <a
-          href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
-          target="_blank"
-          class="footer-link me-4"
-          >Documentation</a
-        >
-
-        <a
-          href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
-          target="_blank"
-          class="footer-link me-4"
-          >Support</a>
-      </div> --}}
     </div>
 </footer>
   <!-- / Footer -->

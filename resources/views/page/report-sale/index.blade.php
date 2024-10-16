@@ -57,7 +57,7 @@
               </form>
               </div>
               <div class="btn-filter btn-export">
-                <a href="#" class="btn btn-primary btn-sm">Export</a>
+                <a href="{{route('export-sale')}}" class="btn btn-primary btn-sm">Export</a>
               </div>
               
             </div>
@@ -77,9 +77,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($order_items as $item)
+                @foreach($order_items as $key => $item)
                 <tr>
-                  <td>{{$item->id}}</td>
+                  <td>{{$key}}</td>
                   <td>{{$item->created_at->format('Y-d-m') }}</td>
                   <td>{{$item->product_name}}</td>
                   <td>{{$item->ram}}</td>

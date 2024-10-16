@@ -22,9 +22,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($blogs as $blog)
+                @foreach($blogs as $key => $blog)
                 <tr>
-                    <th scope="row">{{$blog->id}}</th>
+                    <th scope="row">{{$key}}</th>
                     <td><img src="{{ asset('uploads/blogs/' . $blog->image) }}" alt="banner" style="width: 30px;height: auto;"></td>
                     <td>{{$blog->title}}</td>
                     <td>{{$blog->date}}</td>

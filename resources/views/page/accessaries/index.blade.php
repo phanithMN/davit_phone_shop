@@ -57,9 +57,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($accessaries_type as $accessary_type)
+                @foreach($accessaries_type as $key => $accessary_type)
                 <tr>
-                    <td>{{$accessary_type->id}}</td>
+                    <td>{{$key}}</td>
                     <td>{{$accessary_type->name}}</td>
                     <td>
                           <div class="dropdown">

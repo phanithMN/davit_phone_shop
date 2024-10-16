@@ -8,7 +8,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function User(Request $request) {
+    public function User() {
 
         $users = User::paginate(10);
 
@@ -27,7 +27,6 @@ class UserController extends Controller
         $user->username = $request->input("username");
         $user->email = $request->input("email");
         $user->password = Hash::make($request->input("password"));
-        $user->phone_number = $request->input("phone_number");
         if($request->hasFile('image'))
         {
             $file = $request->file('image');
@@ -55,7 +54,6 @@ class UserController extends Controller
         $user->name = $request->input("name");
         $user->username = $request->input("username");
         $user->email = $request->input("email");
-        $user->phone_number = $request->input("phone_number");
         if($request->hasFile('image'))
         {
             $destination = 'uploads/users'. $user->image;

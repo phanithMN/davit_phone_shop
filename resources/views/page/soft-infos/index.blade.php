@@ -50,9 +50,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($softinfos as $softinfo)
+                @foreach($softinfos as $key => $softinfo)
                 <tr>
-                  <th scope="row">{{$softinfo->id}}</th>
+                  <th scope="row">{{$key}}</th>
                   <th scope="row">{{$softinfo->product_name}}</th>
                   <td><img src="{{ asset('uploads/softinfos/' . $softinfo->icon) }}" alt="banner" style="width: 30px;height: auto;"></td>
                   <th scope="row">{{$softinfo->level}}</th>
