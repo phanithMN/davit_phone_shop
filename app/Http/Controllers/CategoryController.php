@@ -27,6 +27,14 @@ class CategoryController extends Controller
     public function InsertData(Request $request) {
         $categories = new Category();
         $categories->name = $request->input('name');
+        if($request->hasFile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); 
+            $filename = time().'.'.$extension;
+            $file->move('uploads/categories', $filename);
+            $categories->image = $filename;
+        }
         $categories->save();
 
         return redirect()->route('category')->with('message', 'Categories Inserted Successfully');
@@ -42,6 +50,20 @@ class CategoryController extends Controller
     public function DataUpdate(Request $request, $id) {
         $category = Category::find($id);
         $category->name = $request->input('name');
+        if($request->hasFile('image'))
+        {
+            $destination = 'uploads/categories'. $category->image;
+            if(Category::exists($destination))
+            {
+                Category::destroy($destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); 
+            $filename = time().'.'.$extension;
+            $file->move('uploads/categories', $filename);
+            $category->image = $filename;
+            
+        }
         $category->update();
         
         return redirect()->route('category')->with('message','Category Updated Successfully');

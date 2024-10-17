@@ -1157,6 +1157,24 @@ p {
     font-weight: 500;
     line-height: 20px;
     text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.categories .info .widget-product-title a {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: capitalize;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
 }
 
 .pro-info h4 a:hover {

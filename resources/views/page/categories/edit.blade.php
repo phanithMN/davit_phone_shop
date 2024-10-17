@@ -15,7 +15,20 @@
                 <form method ="post" class="form-group" action="{{ route('update-data-category',$category->id)}}" enctype="multipart/form-data">
                     @csrf  
                     @method('PUT')
-                    <div class="mb-3">
+                    <div class="row">
+                        <div class="mb-3 col-lg-6">
+                            <label class="form-label" for="image">Icon</label>
+                            <div class="input-group input-group-merge">
+                                <input
+                                    type="file"
+                                    name="image"
+                                    value="{{$category->image}}"
+                                    class="form-control"
+                                    id="image"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 col-lg-6">
                         <label class="form-label" for="name">Name</label>
                         <div class="input-group input-group-merge">
                             <input
@@ -29,7 +42,7 @@
                             />
                         </div>
                     </div>
-                   
+                    </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>
                 </form>

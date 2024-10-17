@@ -14,19 +14,34 @@
             <div class="card-body">
                 <form method="post" class="form-group" action="insert-data-category" enctype="multipart/form-data">
                     @csrf
-                    <div class="mb-3">
-                        <label class="form-label" for="name">Name</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="name"
-                                class="form-control"
-                                id="name"
-                                placeholder="Insert Name"
-                                aria-label="Insert Name"
-                            />
+                    <div class="row">
+                        <div class="mb-3 col-lg-6">
+                            <label class="form-label" for="image">Icon</label>
+                            <div class="input-group input-group-merge">
+                                <input
+                                    type="file"
+                                    name="image"
+                                    class="form-control"
+                                    id="image"
+                                    placeholder="Insert image"
+                                />
+                            </div>
+                        </div>
+                        <div class="mb-3 col-lg-6">
+                            <label class="form-label" for="name">Name</label>
+                            <div class="input-group input-group-merge">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
+                                    id="name"
+                                    placeholder="Insert Name"
+                                    aria-label="Insert Name"
+                                />
+                            </div>
                         </div>
                     </div>
+                    
                     
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>

@@ -53,6 +53,7 @@
             <thead>
                 <tr class="text-nowrap">
                   <th>#</th>
+                  <th>Icon</th>
                   <th>Name Categories</th>
                   <th>Action</th>
                 </tr>
@@ -61,6 +62,9 @@
                 @foreach($categories as $key => $category)
                 <tr>
                     <th scope="row">{{$key}}</th>
+                    <td>
+                      <img src="{{ asset('uploads/categories/' . $category->image) }}" alt="banner" style="width: 30px;height: auto;">  
+                    </td>
                     <td>{{$category->name}}</td>
                     <td>
                           <div class="dropdown">

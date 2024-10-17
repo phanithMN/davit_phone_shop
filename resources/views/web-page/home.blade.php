@@ -124,9 +124,6 @@
                             <span class=money>${{$product->price}}</span>
                           </span>
                         </p>
-                        <div class="product-rating">
-                          <span class="shopify-product-reviews-badge" data-id="1488431415363"></span>
-                        </div>
                       </div>
                     </div>
                     <!-- Product Content End -->
@@ -268,9 +265,6 @@
                               </span>
                             @endif
                           </p>
-                          <div class="product-rating">
-                            <span class="shopify-product-reviews-badge" data-id="1488429809731"></span>
-                          </div>
                         </div>
                         <div class="pro-add-cart">
                           <a href="{{ route('cart.add', $product->id)  }}" class="action-btn">
@@ -325,9 +319,6 @@
                               <span class=money>${{$product->price}}</span>
                             </span>
                           </p>
-                          <div class="product-rating">
-                            <span class="shopify-product-reviews-badge" data-id="1488431415363"></span>
-                          </div>
                         </div>
                         <div class="pro-add-cart">
                           <a href="{{ route('cart.add', $product->id)  }}" class="action-btn">
@@ -383,9 +374,6 @@
                               <span class=money>${{$product->price}}</span>
                             </span>
                           </p>
-                          <div class="product-rating">
-                            <span class="shopify-product-reviews-badge" data-id="1488431415363"></span>
-                          </div>
                         </div>
                         <div class="pro-add-cart">
                           <a href="{{ route('cart.add', $product->id)  }}" class="action-btn" >
@@ -513,9 +501,6 @@
                                 <span class=money>${{$product->price}}</span>
                               </span>
                             </p>
-                            <div class="product-rating">
-                              <span class="shopify-product-reviews-badge" data-id="1488431415363"></span>
-                            </div>
                           </div>
                         </div>
                         <!-- Product Content End -->
@@ -560,9 +545,6 @@
                                 </span>
                               @endif
                             </p>
-                            <div class="product-rating">
-                              <span class="shopify-product-reviews-badge" data-id="1488429809731"></span>
-                            </div>
                           </div>
                         </div>
                         <!-- Product Content End -->
@@ -607,9 +589,6 @@
                               </span>
                             @endif
                           </p>
-                          <div class="product-rating">
-                            <span class="shopify-product-reviews-badge" data-id="1488429809731"></span>
-                          </div>
                         </div>
                       </div>
                       <!-- Product Content End -->
@@ -641,7 +620,7 @@
               <div class="card-body px-2">
                 <div class="d-flex align-items-center">
                   <div>
-                    <img src="https://soklyphone.com/storage/Icon/category-icon-mobile-phone-1620029194AZr06.svg" alt="{{$category->name}}" width="25">
+                    <img src="{{ asset('uploads/categories/' . $category->image) }}" alt="{{$category->name}}" width="25">
                   </div>
                   <div class="info">
                     <h6 class="widget-product-title">
@@ -752,9 +731,6 @@
                         </span>
                       @endif
                     </p>
-                    <div class="product-rating">
-                      <span class="shopify-product-reviews-badge" data-id="1488429809731"></span>
-                    </div>
                   </div>
                   <div class="pro-add-cart">
                     <a href="{{ route('cart.add', $product->id)  }}" class="action-btn">
@@ -859,9 +835,6 @@
                         </span>
                       @endif
                     </p>
-                    <div class="product-rating">
-                      <span class="shopify-product-reviews-badge" data-id="1488429809731"></span>
-                    </div>
                   </div>
                   <div class="pro-add-cart">
                     <a href="{{ route('cart.add', $product->id)  }}" class="action-btn">
