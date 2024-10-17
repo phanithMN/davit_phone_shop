@@ -108,12 +108,6 @@
         <div data-i18n="Slide Banner">Slide Banner</div>
       </a>
     </li>
-    <li class="menu-item {{ Route::currentRouteName() == 'feature' ? 'active' : '' }}">
-      <a href="{{ route('feature') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-image"></i>
-        <div data-i18n="Feature">Feature</div>
-      </a>
-    </li>
     <li class="menu-header small text-uppercase">
       <span class="menu-header-text">Manage Blog</span>
     </li>
@@ -160,13 +154,6 @@
       <a href="{{ route('soft-info') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-detail"></i>
         <div data-i18n="softinfo">Soft Info</div>
-      </a>
-    </li>
-    
-    <li class="menu-item {{ Route::currentRouteName() == 'feature.image' ? 'active' : '' }}">
-      <a href="{{ route('feature.image') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-image"></i>
-        <div data-i18n="Feature Center">Feature Image</div>
       </a>
     </li>
     <li class="menu-item {{ Route::currentRouteName() == 'ram' ? 'active' : '' }}">
