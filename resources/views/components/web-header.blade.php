@@ -48,7 +48,13 @@
               <div class="drodown-show">
                 <a class="remove d-flex align-items-center">
                   <span class="total-pro">
-                    <span class="bigcounter">@if($carts){{count($carts)}} @else 0 @endif</span> item <br>
+                    <span class="bigcounter">
+                      @if($carts && count($carts) > 0)
+                          {{ count($carts) }}
+                      @else
+                          0
+                      @endif
+                    </span> item <br>
                   </span>
                 </a>
                 <ul class="dropdown cart-box-width">
@@ -253,19 +259,21 @@
           <div class="col-lg-2">
             <div class="setting-box float-right">
               <ul>
-                <li class="{{!is_null(Auth::user()) && isset(Auth::user()->id) ? 'd-none' : 'd-block' }}">
-                  <a href="{{ route('account-sign-in') }}" class="login-account d-flex">
+                <li class="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-none' : 'd-block' }}">
+                  <a href="{{route('customer.login')}}" class="login-account d-flex">
                     <div class="circle">
                       <span class="ti-user"></span>
                     </div>
                     <span class="text-login-account">My Account <br> Register or Login</span>
                   </a>
                 </li>
-                <li class="drodown-show {{!is_null(Auth::user()) && isset(Auth::user()->id) ? 'd-block' : 'd-none' }}">
+                <li class="drodown-show {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-block' : 'd-none' }}">
                   <a href="" class="remove d-flex">
                     <div class="avatar avatar-online d-flex align-items-center">
-                      <img src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
-                      <span class="ml-2 title-user">Welcome <br> <strong>{{!is_null(Auth::user()) && isset(Auth::user()->name) ? Auth::user()->name : '' }}</strong></span>
+                      <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/customers/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <span class="ml-2 title-user">Welcome <br> 
+                      <strong>{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name  : '' }}</strong>
+                    </span>
                     </div>
                   </a>
                   <!-- Currency & Language Selection Start -->
@@ -291,10 +299,10 @@
                           <a href="{{route('change-password')}}"><i class='bx bx-lock-alt icon-circle'></i>Change Password</a>
                         </li>
                         <li class="pt-2 pb-2">
-                          <a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                          <a href="{{route('customer.logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class='bx bx-log-out-circle icon-circle' ></i>Sign Out
                           </a>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf @method('POST') </form>
+                          <form id="logout-form" action="{{route('customer.logout')}}" method="POST" class="d-none"> @csrf @method('POST') </form>
                         </li>
                       </ul>
                     </li>

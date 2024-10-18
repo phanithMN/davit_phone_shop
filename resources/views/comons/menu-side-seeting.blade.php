@@ -53,13 +53,13 @@
         </a>
     </li>
     <li class=" justify-content-center px-4 py-3 hover-menu">
-        <a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <a href="{{ route('customer.logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <div class="sidebar-item">
             <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
                 <path id="Subtraction_21" data-name="Subtraction 21" d="M11,22A11,11,0,0,1,3.222,3.222,11,11,0,1,1,18.778,18.778,10.928,10.928,0,0,1,11,22ZM6.084,5A1.085,1.085,0,0,0,5,6.084v9.749a1.093,1.093,0,0,0,.738,1.03L9,17.949a1.121,1.121,0,0,0,.336.05,1.085,1.085,0,0,0,1.084-1.084v-.542h1.625a1.626,1.626,0,0,0,1.625-1.625V12.583a.541.541,0,1,0-1.083,0v2.166a.542.542,0,0,1-.542.542H10.417V7.167a1.094,1.094,0,0,0-.738-1.03l-.16-.053h2.523a.542.542,0,0,1,.542.541V8.25a.541.541,0,0,0,1.083,0V6.625A1.626,1.626,0,0,0,12.041,5H6.219a.123.123,0,0,0-.034.006l-.024.005a.253.253,0,0,1-.035-.006A.207.207,0,0,0,6.084,5Zm6.5,4.874a.542.542,0,1,0,0,1.084h2.166v1.625a.54.54,0,0,0,.334.5.545.545,0,0,0,.59-.118L17.84,10.8a.54.54,0,0,0,0-.766L15.674,7.867a.542.542,0,0,0-.924.383V9.875Z"></path>
             </svg> Logout
         </div>
         </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf @method('POST') </form>
+        <form id="logout-form" action="{{ route('customer.logout') }}" method="POST" class="d-none"> @csrf @method('POST') </form>
     </li>
 </ul>

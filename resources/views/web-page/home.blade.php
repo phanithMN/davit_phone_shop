@@ -65,7 +65,7 @@
           @foreach ($brands as $brand )
             <div class="col rounded-lg border-0 overflow-hidden p-0 m-1">
               <a href="{{route('product-shop', 'brand_name='.$brand->name)}}" class="d-block">
-                <img src="{{'uploads/brands/'. $brand->image}}" class="rounded d-block img-fluid" alt="{{$brand->name}}">
+                <img src="{{asset('uploads/brands/'. $brand->image)}}" class="rounded d-block img-fluid" alt="{{$brand->name}}">
               </a>
             </div>
           @endforeach

@@ -22,7 +22,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
+                        <img src="{{!is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->image) ? asset('uploads/users/' . Auth::guard('admin')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -31,12 +31,14 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
+                                        <img src="{{!is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->image) ? asset('uploads/users/' . Auth::guard('admin')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">{{ !is_null(Auth::user()) && isset(Auth::user()->name) ? Auth::user()->name : 'Admin'}}</span>
-                                    <small class="text-muted">{{ !is_null(Auth::user()) && isset(Auth::user()->role) ? Auth::user()->role : 'Admin'}}</small>
+                                    <span class="fw-semibold d-block">
+                                        {{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->name) ? Auth::guard('admin')->user()->name : 'Admin'}}
+                                    </span>
+                                    <small class="text-muted">{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->role) ? Auth::guard('admin')->user()->role : 'Admin'}}</small>
                                 </div>
                             </div>
                         </a>
@@ -50,7 +52,7 @@
                             <span class="align-middle">My Profile</span>
                         </a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="dropdown-item" href="#">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Settings</span>
@@ -64,16 +66,16 @@
                                 <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
                             </span>
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a class="dropdown-item" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">{{ __('Logout') }}</span>
+                            <span class="align-middle">Logout</span>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+                        <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none"> @csrf </form>
                     </li>
                 </ul>
             </li>

@@ -17,7 +17,7 @@
                 <!-- Account -->
                 <div class="card-body">
                     <div class="d-flex align-items-start align-items-sm-center gap-4">
-                        <img src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" name="image"/>
+                        <img src="{{!is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->image) ? asset('uploads/users/' . Auth::guard('admin')->user()->image) : '../assets/img/avatars/1.png'  }}" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar" name="image"/>
                         <div class="button-wrapper">
                             <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                 <span class="d-none d-sm-block">Upload new photo</span>
@@ -33,26 +33,26 @@
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="name" class="form-label">Name</label>
-                            <input class="form-control" type="text" id="name" name="name" value="{{ !is_null(Auth::user()) && isset(Auth::user()->name) ? Auth::user()->name : 'Admin'}}" autofocus />
+                            <input class="form-control" type="text" id="name" name="name" value="{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->name) ? Auth::guard('admin')->user()->name : 'Admin'}}" autofocus />
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input class="form-control" type="text" id="email" name="email" value="{{ !is_null(Auth::user()) && isset(Auth::user()->email) ? Auth::user()->email : 'admin@admin.com'}}" placeholder="john.doe@example.com" />
+                            <input class="form-control" type="text" id="email" name="email" value="{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->email) ? Auth::guard('admin')->user()->email : 'admin@admin.com'}}" placeholder="john.doe@example.com" />
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="organization" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="organization" name="username" value="{{ !is_null(Auth::user()) && isset(Auth::user()->username) ? Auth::user()->username : 'admin'}}" />
+                            <input type="text" class="form-control" id="organization" name="username" value="{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->username) ? Auth::guard('admin')->user()->username : 'admin'}}" />
                         </div>
                         <div class="mb-3 col-md-6">
                             <label class="form-label" for="phoneNumber">Phone Number</label>
                             <div class="input-group input-group-merge">
                             <span class="input-group-text">KH (+855)</span>
-                            <input type="number" id="phoneNumber" name="phone_number" class="form-control" placeholder="Phone Number" value="{{ !is_null(Auth::user()) && isset(Auth::user()->phone_number) ? Auth::user()->phone_number : '+855 000-000-000'}}" />
+                            <input type="number" id="phoneNumber" name="phone_number" class="form-control" placeholder="Phone Number" value="{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->phone_number) ? Auth::guard('admin')->user()->phone_number : '+855 000-000-000'}}" />
                             </div>
                         </div>
                         <div class="mb-3 col-md-6">
                             <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ !is_null(Auth::user()) && isset(Auth::user()->address) ? Auth::user()->address : 'no address'}}"/>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="{{ !is_null(Auth::guard('admin')->user()) && isset(Auth::guard('admin')->user()->address) ? Auth::guard('admin')->user()->address : 'no address'}}"/>
                         </div>
                     </div>
                     <div class="mt-2">

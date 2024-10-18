@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
@@ -10,7 +11,7 @@ class UserController extends Controller
 {
     public function User() {
 
-        $users = User::paginate(10);
+        $users = Admin::paginate(10);
 
         return view('page.users.index', ['users'=>$users]);
     }
@@ -22,10 +23,12 @@ class UserController extends Controller
     public function InsertData(Request $request) {
 
 
-        $user = new User();
+        $user = new Admin();
         $user->name = $request->input("name");
         $user->username = $request->input("username");
         $user->email = $request->input("email");
+        $user->phone_number = $request->input("phone_number");
+        $user->address = $request->input("address");
         $user->password = Hash::make($request->input("password"));
         if($request->hasFile('image'))
         {
@@ -43,23 +46,25 @@ class UserController extends Controller
     // update 
     public function Update($id) {
 
-        $user = User::find($id);
+        $user = Admin::find($id);
 
         return view('page.users.edit', ['user' => $user]);
     }
 
     public function DataUpdate(Request $request, $id) {
 
-        $user = User::find($id);
+        $user = Admin::find($id);
         $user->name = $request->input("name");
         $user->username = $request->input("username");
         $user->email = $request->input("email");
+        $user->phone_number = $request->input("phone_number");
+        $user->address = $request->input("address");
         if($request->hasFile('image'))
         {
             $destination = 'uploads/users'. $user->image;
-            if(User::exists($destination))
+            if(Admin::exists($destination))
             {
-                User::destroy($destination);
+                Admin::destroy($destination);
             }
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); 
@@ -76,7 +81,7 @@ class UserController extends Controller
     // delete 
     public function Delete(Request $request, $id){
         try {   
-            User::destroy($request->id);
+            Admin::destroy($request->id);
             return redirect()->route('user');
         } catch(\Exception $e) {
             report($e);

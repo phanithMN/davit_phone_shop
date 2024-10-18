@@ -15,19 +15,18 @@ class CartController extends Controller
     public function Cart()
     {
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $carts = Cart::where('user_id', Auth::id())->get();  
+        $carts = Cart::where('user_id', Auth::guard('customer')->user()->id)->get();  
         return view('web-page.cart.cart', ['carts'=>$carts, 'posts' => $posts]);
     }
 
     public function AddToCart(Request $request, $id)
     {
-        $product = Product::findOrFail($id);
-
-        if (!Auth::check()) {
-            return redirect()->route('account-sign-in')->with('error', 'You need to be logged in to add items to the cart.');
+        if (!Auth::guard('customer')->check()) {
+            return redirect()->route('customer.login')->with('error', 'You need to be logged in to add items to the cart.');
         }
 
-        $userId = Auth::id();
+        $product = Product::findOrFail($id);
+        $userId = Auth::guard('customer')->user()->id;
         $cartItem = Cart::where('product_id', $product->id)
                     ->where('user_id', $userId)
                     ->first();

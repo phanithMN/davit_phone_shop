@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,21 +11,30 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+// Customer routes
+Route::get('/', [App\Http\Controllers\WebControllers\HomePageController::class, 'HomePage'])->name('home-page');
+Route::prefix('customer')->group(function() {
+    Route::get('/login', [App\Http\Controllers\CustomerLoginController::class, 'showLoginForm'])->name('customer.login');
+    Route::post('/login', [App\Http\Controllers\CustomerLoginController::class, 'login'])->name('customer.login.submit');
+    Route::get('/home-page', [App\Http\Controllers\WebControllers\HomePageController::class, 'HomePage'])->name('home')->middleware('auth:customer');
+    Route::post('/logout', [App\Http\Controllers\CustomerLoginController::class, 'logout'])->name('customer.logout');
+    Route::get('/register', [App\Http\Controllers\CustomerRegisterController::class, 'showRegistrationForm'])->name('customer.register');
+    Route::post('/register', [App\Http\Controllers\CustomerRegisterController::class, 'register'])->name('customer.register.submit');
+});
 // web application 
-// auth 
-Route::get('/account/sign-in', [App\Http\Controllers\AuthController::class, 'SigninWeb'])->name('account-sign-in');
-// Route::get('/account/sign-up', [App\Http\Controllers\WebControllers\AuthController::class, 'Signup'])->name('account-sign-up');
-// home page web 
+
 Route::get('/', [App\Http\Controllers\WebControllers\HomePageController::class, 'HomePage'])->name('home-page');
 // page 
-Route::get('product-shop', [App\Http\Controllers\WebControllers\ProductController::class, 'Product'])->name('product-shop');
+Route::get('/product-shop', [App\Http\Controllers\WebControllers\ProductController::class, 'Product'])->name('product-shop');
 Route::get('/detail-prouct-quick-view/{id}', [App\Http\Controllers\WebControllers\ProductController::class, 'quickView'])->name('detail-product-quick-view');
 Route::get('/product-detail/{id}', [App\Http\Controllers\WebControllers\ProductController::class, 'ProductDetail'])->name('product-detail');
 Route::get('blog', [App\Http\Controllers\WebControllers\BlogController::class, 'Blog'])->name('blog');
 Route::get('/blog-detail/{id}', [App\Http\Controllers\WebControllers\BlogController::class, 'BlogDetail'])->name('blog-detail');
 Route::get('/contact', [App\Http\Controllers\WebControllers\ContactController::class, 'Contact'])->name('contact');
 // add to cart and place order
-Route::get('/cart', [App\Http\Controllers\WebControllers\CartController::class, 'Cart'])->name('cart')->middleware('auth');
+Route::get('/cart', [App\Http\Controllers\WebControllers\CartController::class, 'Cart'])->name('cart');
 Route::get('/add-to-cart/{id}', [App\Http\Controllers\WebControllers\CartController::class, 'addToCart'])->name('cart.add');
 Route::put('/update-cart/{id}', [App\Http\Controllers\WebControllers\CartController::class, 'UpdateCart'])->name('update-cart');
 Route::delete('/remove-from-cart/{id}', [App\Http\Controllers\WebControllers\CartController::class, 'RemoveCart'])->name('remove-from-cart');
@@ -45,11 +53,16 @@ Route::get('/account/coupon', [App\Http\Controllers\WebControllers\CouponControl
 Route::get('/quick-view', [App\Http\Controllers\WebControllers\ModalViewController::class, 'QuickView'])->name('quick-view');
 
 // admin 
-// auth 
-Auth::routes();
-Route::get('/sign-in', [App\Http\Controllers\AuthController::class, 'SignIn'])->name('sign-in');
+// Admin routes
+Route::prefix('admin')->group(function() {
+    Route::get('/login', [App\Http\Controllers\AdminLoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [App\Http\Controllers\AdminLoginController::class, 'login'])->name('admin.login.submit');
+    Route::get('/dashboad', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard')->middleware('auth:admin');
+    Route::post('/logout', [App\Http\Controllers\AdminLoginController::class, 'logout'])->name('admin.logout');
+});
 
-// home 
+// Route::get('/sign-in', [App\Http\Controllers\AuthController::class, 'SignIn'])->name('sign-in');
+// Route::post('/sign-out', [App\Http\Controllers\AuthController::class, 'signOut'])->name('sign-out');
 Route::get('/dashboad', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboad');
 // accessaries type
 Route::get('/accessaries', [App\Http\Controllers\AccessaryController::class, 'Accessaries'])->name('accessaries');
@@ -93,13 +106,7 @@ Route::post('/insert-data-banner', [App\Http\Controllers\BannersController::clas
 Route::get('/edit-banner/{id}', [App\Http\Controllers\BannersController::class, 'Update'])->name('update.banner');
 Route::put('/edit-data-banner/{id}', [App\Http\Controllers\BannersController::class, 'DataUpdate']);
 Route::get('/delete-banner/{id}', [App\Http\Controllers\BannersController::class, 'Delete']);
-// feature
-Route::get('/feature', [App\Http\Controllers\FeatureController::class, 'Feature'])->name('feature');
-Route::get('/insert-feature', [App\Http\Controllers\FeatureController::class, 'Insert'])->name('insert.feature');
-Route::post('/insert-data-feature', [App\Http\Controllers\FeatureController::class, 'InsertData']);
-Route::get('/edit-feature/{id}', [App\Http\Controllers\FeatureController::class, 'Update'])->name('update.feature');
-Route::put('/edit-data-feature/{id}', [App\Http\Controllers\FeatureController::class, 'DataUpdate'])->name('update.data.feature');
-Route::get('/delete-feature/{id}', [App\Http\Controllers\FeatureController::class, 'Delete']);
+
 // product
 Route::get('/product', [App\Http\Controllers\ProductController::class, 'Product'])->name('product');
 Route::get('/insert-product', [App\Http\Controllers\ProductController::class, 'Insert'])->name('insert.product');
@@ -107,13 +114,7 @@ Route::post('/insert-data-product', [App\Http\Controllers\ProductController::cla
 Route::get('/edit-product/{id}', [App\Http\Controllers\ProductController::class, 'Update'])->name('update.product');
 Route::put('/edit-data-product/{id}', [App\Http\Controllers\ProductController::class, 'DataUpdate'])->name('edit-data-product');
 Route::get('/delete-product/{id}', [App\Http\Controllers\ProductController::class, 'Delete'])->name('delete-product');
-// feature_image
-Route::get('/feature-image', [App\Http\Controllers\FeatureImageController::class, 'FeatureImage'])->name('feature.image');
-Route::get('/insert-feature-image', [App\Http\Controllers\FeatureImageController::class, 'Insert'])->name('insert.feature-image');
-Route::post('/insert-data-feature-image', [App\Http\Controllers\FeatureImageController::class, 'InsertData'])->name('insert-data-feature-image');
-Route::get('/edit-feature-image/{id}', [App\Http\Controllers\FeatureImageController::class, 'Update'])->name('update.feature-image');
-Route::put('/edit-data-feature-image/{id}', [App\Http\Controllers\FeatureImageController::class, 'DataUpdate'])->name('edit-data-feature-image');
-Route::get('/delete-feature-image/{id}', [App\Http\Controllers\FeatureImageController::class, 'Delete'])->name('delete-feature-image');
+
 // specification
 Route::get('/specification', [App\Http\Controllers\SpecificationController::class, 'Specification'])->name('specification');
 Route::get('/insert-specification', [App\Http\Controllers\SpecificationController::class, 'Insert'])->name('insert-specification');

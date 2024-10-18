@@ -13,7 +13,8 @@ class MyOrderController extends Controller
     public function MyOrder() {
 
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $order_items = OrderItems::where('user_id', Auth::id())->get();
+        
+        $order_items = OrderItems::where('user_id', Auth::guard('customer')->user()->id)->get();
         return view('web-page.my-order.index', ['order_items' =>  $order_items, 'posts' => $posts]);
     }
 }

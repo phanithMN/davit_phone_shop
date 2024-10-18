@@ -14,7 +14,7 @@ class CheckoutController extends Controller
     public function Checkout() {
 
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $carts = Cart::where('user_id', Auth::id())->get();    
+        $carts = Cart::where('user_id', Auth::guard('customer')->user()->id)->get();    
 
         return view('web-page.checkout.index', ['carts' => $carts, 'posts' => $posts]);
     }
@@ -49,7 +49,7 @@ class CheckoutController extends Controller
         ]);
 
         // Get Cart Items
-        $userId = Auth::id();
+        $userId = Auth::guard('customer')->user()->id;
         $cartitems = Cart::where('user_id', $userId)->get();
         // Create Order Items
         foreach ($cartitems as $cartitem) {
@@ -82,7 +82,6 @@ class CheckoutController extends Controller
 
         $cartitems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($cartitems);
-    
         return redirect()->route('home-page')->with('message', 'Order placed Successfully');
     }
 }

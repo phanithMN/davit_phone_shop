@@ -8,11 +8,11 @@
               <div class="px-4 bg-fill rounded-top border-bottom">
                 <div class="media align-items-center py-3">
                   <div class="img-thumbnail rounded-circle position-relative" style="width: 6.375rem;">
-                    <img class="rounded-circle" src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" alt="avatar">
+                    <img class="rounded-circle" src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt="avatar">
                   </div>
                   <div class="media-body pl-3">
-                    <h3 class="font-size-base mb-0">{{!is_null(Auth::user()) && isset(Auth::user()->name) ? Auth::user()->name : 'Admin'  }}</h3>
-                    <span class="text-accent font-size-sm">{{!is_null(Auth::user()) && isset(Auth::user()->email) ? Auth::user()->email : 'admin@gmail.com'  }}</span>
+                    <h3 class="font-size-base mb-0">{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name : 'Admin'  }}</h3>
+                    <span class="text-accent font-size-sm">{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->email) ? Auth::guard('customer')->user()->email : 'admin@gmail.com'  }}</span>
                   </div>
                 </div>
               </div>
@@ -43,7 +43,7 @@
                         <i class="czi-check mr-2"></i>Save </button>
                     </div>
                     <div id="avatar-controls" class="media align-items-center px-4">
-                      <img class="rounded-circle" src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" width="90" alt="avatar">
+                      <img class="rounded-circle" src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" width="90" alt="avatar">
                       <div class="media-body pl-3">
                         <button type="button" class="btn btn-light btn-shadow btn-sm mb-2" id="change-avatar" data-toggle="modal" data-target="#choose-modal">
                           <i class='bx bx-revision mr-1'></i>Change avatar </button>
@@ -68,8 +68,8 @@
                             </div>
                             <p class="mt-3">Upload Photo</p>
                           </div>
-                          <div class="col-md-4 avatar-source source-external" data-url="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}">
-                            <img src="{{!is_null(Auth::user()) && isset(Auth::user()->image) ? asset('uploads/users/' . Auth::user()->image) : '../assets/img/avatars/1.png'  }}" class="rounded-circle img-thumbnail img-responsive">
+                          <div class="col-md-4 avatar-source source-external" data-url="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}">
+                            <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/customers/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" class="rounded-circle img-thumbnail img-responsive">
                             <p class="mt-3">Google</p>
                           </div>
                         </div>
@@ -95,7 +95,7 @@
                     <div class="form-group">
                       <label for="name" class="">Full Name</label>
                       <div class="password-toggle">
-                        <input type="text" name="name" value="{{!is_null(Auth::user()) && isset(Auth::user()->name) ? Auth::user()->name : '' }}" placeholder="Enter your full name" class="form-control ">
+                        <input type="text" name="name" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name : '' }}" placeholder="Enter your full name" class="form-control ">
                         <div>
                           <label class="password-toggle-btn">
                             <i class='bx bxs-user password-toggle-indicator'></i>
@@ -109,7 +109,7 @@
                     <div class="form-group">
                       <label for="birthday" class="">Birthday</label>
                       <div class="input-group date" data-provide="datepicker" data-date-format="dd-M-yyyy">
-                        <input type="text" name="birthday" value="10-Jun-2024" placeholder="Enter your birthday" class="form-control " onkeypress="disableInput(event);">
+                        <input type="text" name="birthday" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->dob) ? Auth::guard('customer')->user()->dob : '' }}" placeholder="Enter your birthday" class="form-control " onkeypress="disableInput(event);">
                         <div class="input-group-addon">
                           <label class="password-toggle-btn">
                             <i class="bx bx-calendar-alt password-toggle-indicator"></i>
@@ -123,7 +123,7 @@
                     <div class="form-group">
                       <label for="email" class="">Email</label>
                       <div class="password-toggle">
-                        <input type="email" name="email" value="{{!is_null(Auth::user()) && isset(Auth::user()->email) ? Auth::user()->email : '' }}" placeholder="Enter your email" class="form-control ">
+                        <input type="email" name="email" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->email) ? Auth::guard('customer')->user()->email : '' }}" placeholder="Enter your email" class="form-control ">
                         <div>
                           <label class="password-toggle-btn">
                             <i class="bx bx-envelope password-toggle-indicator"></i>
@@ -137,7 +137,7 @@
                     <div class="form-group">
                       <label for="phone" class="">Phone Number</label>
                       <div class="password-toggle">
-                        <input type="text" name="phone" value="{{!is_null(Auth::user()) && isset(Auth::user()->phone_number) ? Auth::user()->phone_number : '' }}" placeholder="Enter your phone number" class="form-control " onkeypress="inputNumber(event);">
+                        <input type="text" name="phone" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->phone_number) ? Auth::guard('customer')->user()->phone_number : '' }}" placeholder="Enter your phone number" class="form-control " onkeypress="inputNumber(event);">
                         <div>
                           <label class="password-toggle-btn">
                             <i class="bx bxs-phone password-toggle-indicator"></i>
@@ -149,7 +149,7 @@
                   </div>
                   <div class="col-sm-12 mb-lg-4">
                     <label>Address</label>
-                    <textarea name="address" class="form-control" placeholder="Enter your address">{{!is_null(Auth::user()) && isset(Auth::user()->address) ? old('address', Auth::user()->address) : '' }}</textarea>
+                    <textarea name="address" class="form-control" placeholder="Enter your address">{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->address) ? old('address', Auth::guard('customer')->user()->address) : '' }}</textarea>
                   </div>
                   <div class="col-12">
                     <hr class="mt-2 mb-3">

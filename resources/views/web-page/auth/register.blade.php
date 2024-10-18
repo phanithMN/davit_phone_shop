@@ -1,76 +1,96 @@
+@extends('layout.app-auth')
+@section('title') {{'Register'}} @endsection
+@section('content-auth')
 
-@extends('layout.web-app.app')   
-@section('title') {{'Sign In'}} @endsection
-@section('content-web')
-<!-- BREADCRUMBS SETCTION START -->
-<div class="breadcrumbs-section">
-    <div class="breadcrumbs overlay-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="breadcrumbs-inner text-left">
-              <nav class="" role="navigation" aria-label="breadcrumbs">
-                <ul class="breadcrumb-list">
-                  <li>
-                    <a href="/" title="Back to the home page">Home</a>
-                  </li>
-                  <li>
-                    <span>Create Account</span>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+<div class="container-xxl">
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div class="authentication-inner" style="max-width: 550px;">
+      <!-- Register Card -->
+      <div class="card">
+        <div class="card-body">
+          <!-- Logo -->
+          <div class="app-brand justify-content-center">
+            <a href="index.html" class="app-brand-link gap-2">
+              <span class="app-brand-text demo text-body fw-bolder">Register Account </span>
+            </a>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- BREADCRUMBS SETCTION END -->
-  <style>
-    .breadcrumbs-inner {
-      padding-top: 20px;
-    }
+          <!-- /Logo -->
+          <h4 class="mb-2">Please sign up new account! 🚀</h4>
+          <p class="mb-4">Make your app management easy and fun!</p>
+          <form method="POST" action="{{ route('customer.register.submit') }}" class="mb-3">
+            @csrf
+            <div class="row">
+              <div class="mb-3 form-password-toggle col-lg-12">
+                  <label for="image">Image</label>
+                  <input
+                      type="file"
+                      name="image"
+                      class="form-control"
+                      id="image"    
+                  />
+                  @error('image')
+                      <span>{{ $message }}</span>
+                  @enderror
+              </div>
+              <div class="mb-3 form-password-toggle col-lg-6">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" id="name" class="form-control" placeholder="input name">
+                  @error('name')
+                      <span>{{ $message }}</span>
+                  @enderror
+              </div>
+              <div class="mb-3 form-password-toggle col-lg-6">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="input email">
+                @error('email')
+                    <span>{{ $message }}</span>
+                @enderror
+              </div>
 
-    .breadcrumbs-inner {
-      padding-bottom: 20px;
-    }
-  </style>
-  <main role="main">
-    <div class="customer-page theme-default-margin">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
-            <div class="login">
-              <div class="login-form-container">
-                <div class="login-text">
-                  <h2>Create Account</h2>
-                  <p>Please Register using account detail bellow.</p>
-                </div>
-                <div class="register-form">
-                  <form method="post" action="/account" id="create_customer" accept-charset="UTF-8" data-login-with-shop-sign-up="true">
-                    <input type="hidden" name="form_type" value="create_customer" />
-                    <input type="hidden" name="utf8" value="✓" />
-                    <label for="FirstName" class="hidden-label">First Name</label>
-                    <input type="text" name="customer[first_name]" id="FirstName" class="input-full" placeholder="First Name" autocapitalize="words" autofocus>
-                    <label for="LastName" class="hidden-label">Last Name</label>
-                    <input type="text" name="customer[last_name]" id="LastName" class="input-full" placeholder="Last Name" autocapitalize="words">
-                    <label for="Email" class="hidden-label">Email</label>
-                    <input type="email" name="customer[email]" id="Email" class="input-full" placeholder="Email" autocorrect="off" autocapitalize="off">
-                    <label for="CreatePassword" class="hidden-label">Password</label>
-                    <input type="password" name="customer[password]" id="CreatePassword" class="input-full" placeholder="Password">
-                    <div class="form-action-button">
-                      <button type="submit" class="theme-default-button">Create</button>
-                    </div>
-                  </form>
-                  <div class="account-optional-action">
-                    <a href="https://ponno-demo.myshopify.com">Return to Store</a>
-                  </div>
-                </div>
+              <div class="mb-3 form-password-toggle col-lg-6">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" class="form-control" placeholder="input password">
+                  @error('password')
+                      <span>{{ $message }}</span>
+                  @enderror
+              </div>
+
+              <div class="mb-3 form-password-toggle col-lg-6">
+                  <label for="password_confirmation">Confirm Password</label>
+                  <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="confirm password">
+              </div>
+              <div class="mb-3 form-password-toggle col-lg-6">
+                  <label for="phone_number">Phone Number</label>
+                  <input type="number" name="phone_number" id="phone_number" class="form-control" placeholder="input phone number">
+              </div>
+              <div class="mb-3 form-password-toggle col-lg-6">
+                  <label for="dob">Date of Birth</label>
+                  <input type="date" name="dob" id="dob" class="form-control" placeholder="input Date of Birth">
+              </div>
+              <div class="mb-3 form-password-toggle col-lg-12">
+                  <label for="address">Address</label>
+                  <textarea id="address" name="address" rows="4" cols="50" class="form-control" placeholder="input address"></textarea>
               </div>
             </div>
-          </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary d-grid w-100">Register</button>
+            </div>
+          </form>
+          <p class="text-center">
+            <span>Already have an account?</span>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <span class="align-middle">{{ __('Sign in') }}</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+          </p>
         </div>
       </div>
+      <!-- Register Card -->
     </div>
-  </main>
+  </div>
+</div>
+
 @endsection

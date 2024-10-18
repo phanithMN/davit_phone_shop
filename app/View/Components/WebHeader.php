@@ -33,7 +33,10 @@ class WebHeader extends Component
     {
         $products_type = ProductType::all();
         $brands = Brand::all();
-        $carts = Cart::where('user_id', Auth::id())->get();   
+        $carts = [];
+        if (Auth::guard('customer')->check()) {
+            $carts = Cart::where('user_id', Auth::guard('customer')->user()->id)->get();
+        }
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
         $accessaries_type = AccessaryType::all();
 

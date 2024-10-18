@@ -1,16 +1,17 @@
 @extends('layout.app-auth')
-@section('title') {{'Register'}} @endsection
+@section('title') {{'Forgot Password'}} @endsection
 @section('content-auth')
+<!-- Content -->
 
 <div class="container-xxl">
   <div class="authentication-wrapper authentication-basic container-p-y">
-    <div class="authentication-inner">
-      <!-- Register Card -->
+    <div class="authentication-inner py-4">
+      <!-- Forgot Password -->
       <div class="card">
         <div class="card-body">
           <!-- Logo -->
           <div class="app-brand justify-content-center">
-            <a href="index.html" class="app-brand-link gap-2">
+            <a href="{{route('home')}}" class="app-brand-link gap-2">
               <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <defs>
@@ -49,85 +50,25 @@
             </a>
           </div>
           <!-- /Logo -->
-          <h4 class="mb-2">Please sign up new account! 🚀</h4>
-          <p class="mb-4">Make your app management easy and fun!</p>
-          <form id="formAuthentication" class="mb-3"  method="POST" action="{{ route('register') }}">
-            @csrf
+          <h4 class="mb-2">Forgot Password? 🔒</h4>
+          <p class="mb-4">Enter your email and we'll send you instructions to reset your password</p>
+          <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
             <div class="mb-3">
-                <label for="name" class="form-label">{{ __('Name') }}</label>
-                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus />
             </div>
-
-            <div class="mb-3">
-                <label for="username" class="form-label">{{ __('Username') }}</label>
-                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-                @error('username')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="mb-3">
-                <label for="email" class="form-label">{{ __('Email') }}</label>
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Enter email" value="{{ old('email') }}" required autocomplete="email">
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="mb-3 form-password-toggle">
-                <label class="form-label" for="password">{{ __('Password') }}</label>
-                <div class="input-group input-group-merge">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password" name="password"  required autocomplete="new-password">
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <span class="input-group-text cursor-pointer">
-                    <i class="bx bx-hide"></i>
-                    </span>
-                </div>
-            </div>
-
-            <div class="mb-3 form-password-toggle">
-                <label class="form-label" for="password">{{ __('Confirm Password') }}</label>
-                <div class="input-group input-group-merge">
-                    <input id="password-confirm" type="password" class="form-control" placeholder="Enter confirm password" name="password_confirmation" required autocomplete="new-password">
-                </div>
-            </div>
-
-            <div class="mb-3">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                <label class="form-check-label" for="terms-conditions"> I agree to <a href="javascript:void(0);">privacy policy & terms</a>
-                </label>
-              </div>
-            </div>
-            <button class="btn btn-primary d-grid w-100">{{ __('Sign up') }}</button>
+            <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
           </form>
-          <p class="text-center">
-            <span>Already have an account?</span>
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <span class="align-middle">{{ __('Sign in instead') }}</span>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
-            </form>
-          </p>
+          <div class="text-center">
+            <a href="{{ route('sign-in') }}" class="d-flex align-items-center justify-content-center">
+              <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i> Back to login </a>
+          </div>
         </div>
       </div>
-      <!-- Register Card -->
+      <!-- /Forgot Password -->
     </div>
   </div>
 </div>
 
+<!-- / Content -->
 @endsection

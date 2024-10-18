@@ -12,20 +12,20 @@ class FavoriteController extends Controller
 {
     public function Favorite() {
         $posts = Blog::orderBy('created_at', 'desc')->take(2)->get();
-        $favorites = Favorite::where('user_id', Auth::id())->get();
+        $favorites = Favorite::where('user_id', Auth::guard('customer')->user()->id)->get();
         return view('web-page.favorite.index', ['favorites' => $favorites, 'posts'=> $posts ]);
     }
 
     public function FavoriteAdd($id) {
         $product = Product::findOrFail($id);
-        $favoriteExists = Favorite::where('user_id', Auth::id())
+        $favoriteExists = Favorite::where('user_id', Auth::guard('customer')->user()->id)
         ->where('product_id', $product->id)
         ->exists();
         if ($favoriteExists) {
             return redirect()->back()->with('message', 'Product added to favorite ready!');
         } else {
             $favorite = new Favorite();
-            $favorite->user_id = Auth::id();
+            $favorite->user_id = Auth::guard('customer')->user()->id;
             $favorite->product_id = $product->id;
             $favorite->name = $product->name;
             $favorite->price = $product->price;
