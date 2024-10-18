@@ -68,8 +68,8 @@ class CheckoutController extends Controller
         }
 
         // Update User Address if not set
-        $user = Auth::user();
-        if (is_null($user->address)) {
+        $user = Auth::guard('customer')->user();
+        if (is_null($user->id)) {
             $user->update([
                 'fname' => $request->input('fname'),
                 'lname' => $request->input('lname'),
@@ -80,7 +80,7 @@ class CheckoutController extends Controller
             ]);
         }
 
-        $cartitems = Cart::where('user_id', Auth::id())->get();
+        $cartitems = Cart::where('user_id', Auth::guard('customer')->user()->id)->get();
         Cart::destroy($cartitems);
         return redirect()->route('home-page')->with('message', 'Order placed Successfully');
     }
