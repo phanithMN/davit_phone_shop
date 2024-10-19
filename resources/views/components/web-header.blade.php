@@ -257,7 +257,7 @@
           <!-- Menu Area End Here -->
           <!-- Cart Box Start Here -->
           <div class="col-lg-2">
-            <div class="setting-box float-right">
+            <div class="setting-box float-right" style="width: 115px;">
               <ul>
                 <li class="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-none' : 'd-block' }}">
                   <a href="{{route('customer.login')}}" class="login-account d-flex">
@@ -272,7 +272,9 @@
                     <div class="avatar avatar-online d-flex align-items-center">
                       <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/customers/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
                       <span class="ml-2 title-user">Welcome <br> 
-                      <strong>{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name  : '' }}</strong>
+                      <strong style="width: max-content;display: block;">
+                        {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name  : '' }}
+                      </strong>
                     </span>
                     </div>
                   </a>

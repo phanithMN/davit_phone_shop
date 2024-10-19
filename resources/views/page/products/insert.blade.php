@@ -261,7 +261,7 @@
                     </div>
                 </div>
             </div>   -->
-
+            <h4 class="fw-bold py-2">Add Info Product</h4>
             <!-- button  -->
             <div class="col-lg-12">
                 <div class="card mb-4">
