@@ -169,7 +169,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="mb-3 col-12 col-lg-6">
+                            <div class="mb-3 col-12 col-lg-12">
                                 <label class="form-label" for="Thumbnail ">Thumbnail  Images</label>
                                 <div class="input-group input-group-merge">
                                     <input
@@ -244,24 +244,30 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="col-lg-6">
+            <h4 class="fw-bold py-2">Add Info Product</h4>
+            <div class="col-lg-6">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h5 class="mb-0">Colors</h5>
+                        <h5 class="mb-0">Soft Info</h5>
                     </div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="mb-3 col-12 col-lg-6 rams-blog">
-                                <div class="d-flex align-items-center">
-                                    <input type="checkbox" id="rams" name="rams[]" value="rams">
-                                    <label class="form-label" for="rams">Rams</label>
-                                </div>
-                            </div>
-                        </div>
+                        <button id="addInputBtn" type="button" class="btn btn-light mb-3"><span>Add Form Input</span><i class='bx bx-plus'></i> </button>
+                        <div id="inputContainer"></div>
                     </div>
                 </div>
-            </div>   -->
-            <h4 class="fw-bold py-2">Add Info Product</h4>
+            </div>
+            <div class="col-lg-6">
+                <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Specification</h5>
+                    </div>
+                    <div class="card-body">
+                        <button id="addInputBtn2" type="button" class="btn btn-light mb-3"><span>Add Form Input</span><i class='bx bx-plus'></i> </button>
+                        <div id="inputContainer2"></div>
+                    </div>
+                </div>
+            </div>
+
             <!-- button  -->
             <div class="col-lg-12">
                 <div class="card mb-4">
@@ -274,5 +280,103 @@
         </div>
     </form>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#addInputBtn').click(function() {
+            var newInput = `
+                
+                <div class="row form-group-soft-info">
+                    <div class="button-close">
+                        <button type="button" class="btn-close">&times;</button>
+                    </div>
+                    <div class="mb-3 col-lg-6">
+                        <label class="form-label" for="image">Image</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="file"
+                                name="image" 
+                                class="form-control"
+                                id="image"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-6">
+                        <label class="form-label" for="level">Level</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="text"
+                                name="level"
+                                class="form-control"
+                                id="level"
+                                placeholder="Insert level"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-6">
+                        <label class="form-label" for="description">Description</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="text"
+                                name="description"
+                                class="form-control"
+                                id="description"
+                                placeholder="Insert description"
+                            />
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Append new input to the container
+            $('#inputContainer').append(newInput);
+        });
+        $('#inputContainer').on('click', '.btn-close', function() {
+            $(this).closest('.form-group-soft-info').remove();
+        });
+    });
+
+    $(document).ready(function() {
+        $('#addInputBtn2').click(function() {
+            var newInput = `
+                <div class="row form-group-soft-info">
+                    <div class="button-close">
+                        <button type="button" class="btn-close">&times;</button>
+                    </div>
+                    <div class="mb-3 col-lg-12">
+                        <label class="form-label" for="title">Title</label>
+                        <div class="input-group input-group-merge">
+                            <input
+                                type="text"
+                                name="title"
+                                class="form-control"
+                                id="title"
+                                placeholder="Insert title"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-3 col-lg-12">
+                        <label class="form-label" for="description">Description</label>
+                        <div class="input-group input-group-merge">
+                            <textarea
+                                type="text"
+                                name="description"
+                                class="form-control"
+                                id="description"
+                                placeholder="Insert description"
+                                style="height: 100px;"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Append new input to the container
+            $('#inputContainer2').append(newInput);
+        });
+        $('#inputContainer2').on('click', '.btn-close', function() {
+            $(this).closest('.form-group-soft-info').remove();
+        });
+    });
+</script>
 
 @endsection

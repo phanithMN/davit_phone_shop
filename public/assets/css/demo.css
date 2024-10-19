@@ -347,3 +347,28 @@
   border-radius: 50%;
   display: block;
 }
+#addInputBtn.btn-light,
+#addInputBtn2.btn-light {
+  border: 1px solid #d9dee3;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button-close .btn-close {
+  position: absolute;
+  margin-top: 8px;
+  right: 25px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  background-color: #e6e6e6;
+  color: #93939396;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+}
