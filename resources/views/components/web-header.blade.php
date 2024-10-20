@@ -256,7 +256,7 @@
           </div>
           <!-- Menu Area End Here -->
           <!-- Cart Box Start Here -->
-          <div class="col-lg-2" style="padding-right: 0px">
+          <div class="col-lg-2" style="padding-right: 6px">
             <div class="setting-box">
               <ul style="display: flex;justify-content: flex-end">
                 <li class="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-none' : 'd-block' }}">
@@ -268,9 +268,13 @@
                   </a>
                 </li>
                 <li class="drodown-show {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-block' : 'd-none' }}">
-                  <a href="" class="remove d-flex" style="width: 9.5rem;">
-                    <div class="avatar avatar-online d-flex align-items-center">
-                      <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
+                  <a href="">
+                    <div class="d-flex">
+                      <img 
+                      width="40"
+                      height="40"
+                      src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}"
+                      class="w-px-40 h-auto rounded-circle" />
                       <span class="ml-2 title-user">Welcome <br> 
                       <strong style="width: max-content;display: block;">
                         {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name  : '' }}
