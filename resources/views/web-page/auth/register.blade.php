@@ -17,7 +17,7 @@
           <!-- /Logo -->
           <h4 class="mb-2">Please sign up new account! 🚀</h4>
           <p class="mb-4">Make your app management easy and fun!</p>
-          <form method="POST" action="{{ route('customer.register.submit') }}" class="mb-3">
+          <form method="POST" action="{{ route('customer.register.submit') }}" class="mb-3" enctype="multipart/form-data">
             @csrf
             <div class="row">
               <div class="mb-3 form-password-toggle col-lg-12">

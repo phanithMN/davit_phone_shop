@@ -8,7 +8,10 @@
               <div class="px-4 bg-fill rounded-top border-bottom">
                 <div class="media align-items-center py-3">
                   <div class="img-thumbnail rounded-circle position-relative" style="width: 6.375rem;">
-                    <img class="rounded-circle" src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt="avatar">
+                    <img class="rounded-circle" 
+                    src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" 
+                    alt="avatar"
+                    >
                   </div>
                   <div class="media-body pl-3">
                     <h3 class="font-size-base mb-0">{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name : 'Admin'  }}</h3>
@@ -43,7 +46,12 @@
                         <i class="czi-check mr-2"></i>Save </button>
                     </div>
                     <div id="avatar-controls" class="media align-items-center px-4">
-                      <img class="rounded-circle" src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" width="90" alt="avatar">
+                      <img 
+                      class="rounded-circle" 
+                      src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" 
+                      width="90" alt="avatar"
+                      style="height: 90px;object-fit: cover;"
+                      >
                       <div class="media-body pl-3">
                         <button type="button" class="btn btn-light btn-shadow btn-sm mb-2" id="change-avatar" data-toggle="modal" data-target="#choose-modal">
                           <i class='bx bx-revision mr-1'></i>Change avatar </button>
@@ -69,7 +77,9 @@
                             <p class="mt-3">Upload Photo</p>
                           </div>
                           <div class="col-md-4 avatar-source source-external" data-url="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}">
-                            <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" class="rounded-circle img-thumbnail img-responsive">
+                            <img 
+                            src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" 
+                            class="rounded-circle img-thumbnail img-responsive">
                             <p class="mt-3">Profile</p>
                           </div>
                         </div>
