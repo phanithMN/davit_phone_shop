@@ -81,6 +81,7 @@ class CheckoutController extends Controller
         }
 
         $cartitems = Cart::where('user_id', Auth::guard('customer')->user()->id)->get();
+        
         Cart::destroy($cartitems);
         return redirect()->route('home-page')->with('message', 'Order placed Successfully');
     }

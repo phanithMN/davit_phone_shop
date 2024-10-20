@@ -257,7 +257,7 @@
           <!-- Menu Area End Here -->
           <!-- Cart Box Start Here -->
           <div class="col-lg-2">
-            <div class="setting-box float-right" style="width: 115px;">
+            <div class="setting-box float-right" style="width: max-content;">
               <ul>
                 <li class="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-none' : 'd-block' }}">
                   <a href="{{route('customer.login')}}" class="login-account d-flex">

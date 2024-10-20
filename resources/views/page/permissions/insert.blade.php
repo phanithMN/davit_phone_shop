@@ -28,6 +28,17 @@
                                 />
                             </div>
                         </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="key" class="form-label">Select Key <span class="text-danger">*</span></label>
+                                <select class="form-select form-control" id="key" name="key">
+                                    <option value="">Chosse Key</option>
+                                    @foreach($permission_keys as $permission_key)
+                                    <option value="{{$permission_key}}">{{$permission_key}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
                    
                     <button type="submit" class="btn btn-primary">Submit</button>

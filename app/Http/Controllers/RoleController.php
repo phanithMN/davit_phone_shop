@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permissions;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
@@ -16,15 +17,25 @@ class RoleController extends Controller
     }
 
     public function Insert() {
-
-        return view('page.roles.insert');
+        $permissions = Permissions::orderBy('name', 'ASC')->get();
+        return view('page.roles.insert', ['permissions'=>$permissions]);
     }
 
     public function InsertData(Request $request) {
-        $role = new Role();
-        $role->name = $request->input('name');
-     
-        $role->save();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'permission' => 'array', 
+        ]);
+    
+        // Create the new role
+        $role = Role::create(['name' => $request->name]);
+        
+        // Attach selected permissions to the role
+        if ($request->has('permission')) {
+            $permissions = Permissions::whereIn('name', $request->permission)->pluck('id');
+            $role->permissions()->attach($permissions); 
+        }
+        
         return redirect()->route('role')->with('message', 'Role Insert Successfully');
     }
 

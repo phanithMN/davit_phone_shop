@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class RolePermission extends Model
 {
-    public $table = "role_permission";
+    use HasFactory;
+    public $table = "role_permissions";
     public $primaryKey = 'id';
     public $incrementing = true;
     public $timestamp = false;

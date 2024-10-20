@@ -18,6 +18,7 @@
                     <th>Name</th>
                     <th>Username</th>
                     <th>Email</th>
+                    <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                     <th scope="row">{{$user->name}}</th>
                     <th scope="row">{{$user->username}}</th>
                     <th scope="row">{{$user->email}}</th>
+                    <th scope="row">{{$user->role_name}}</th>
                     <td>
                           <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">

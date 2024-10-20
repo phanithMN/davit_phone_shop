@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permission;
+use App\Models\PermissionKey;
+use App\Models\Permissions;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
     public function Permission() {
-        $permissions = Permission::all();
+        $permissions = Permissions::all();
 
         return view('page.permissions.index', [
             'permissions'=>$permissions,
@@ -16,13 +17,14 @@ class PermissionController extends Controller
     }
 
     public function Insert() {
-
-        return view('page.permissions.insert');
+        $permission_keys = PermissionKey::$permission_key;
+        return view('page.permissions.insert', ['permission_keys'=>$permission_keys]);
     }
 
     public function InsertData(Request $request) {
-        $permission = new Permission();
+        $permission = new Permissions();
         $permission->name = $request->input('name');
+        $permission->key = $request->input('key');
      
         $permission->save();
         return redirect()->route('permission')->with('message', 'Permission Inserted Successfully');
@@ -30,16 +32,19 @@ class PermissionController extends Controller
 
     // update 
     public function Update($id) {
-        $permission = Permission::find($id);
+        $permission = Permissions::find($id);
+        $permission_keys = PermissionKey::$permission_key;
 
         return view('page.permissions.edit', [
             'permission'=>$permission,
+            'permission_keys'=>$permission_keys
         ]);
     }
 
     public function DataUpdate(Request $request, $id) {
-        $permission = Permission::find($id);
+        $permission = Permissions::find($id);
         $permission->name = $request->input('name');
+        $permission->key = $request->input('key');
         
         $permission->update();
         
@@ -49,7 +54,7 @@ class PermissionController extends Controller
     // delete 
     public function Delete(Request $request, $id){
         try {
-            Permission::destroy($request->id);
+            Permissions::destroy($request->id);
             return redirect()->route('permission');
         } catch(\Exception $e) {
             report($e);

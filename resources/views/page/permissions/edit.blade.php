@@ -15,20 +15,34 @@
                 <form method ="post" class="form-group" action="{{ route('update-data-permission' ,$permission->id)}}" enctype="multipart/form-data">
                     @csrf  
                     @method('PUT')
-                    <div class="mb-3">
-                        <label class="form-label" for="name">Name</label>
-                        <div class="input-group input-group-merge">
-                            <input
-                                type="text"
-                                name="name"
-                                value="{{$permission->name}}"
-                                class="form-control"
-                                id="name"
-                                placeholder="Insert Name"
-                                required
-                            />
+                    <div class="row">
+                        <div class="mb-3  col-lg-6">
+                            <label class="form-label" for="name">Name</label>
+                            <div class="input-group input-group-merge">
+                                <input
+                                    type="text"
+                                    name="name"
+                                    value="{{$permission->name}}"
+                                    class="form-control"
+                                    id="name"
+                                    placeholder="Insert Name"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="key" class="form-label">Select Key <span class="text-danger">*</span></label>
+                                <select class="form-select form-control" id="key" name="key">
+                                    <option value="">Chosse Key</option>
+                                    @foreach($permission_keys as $permission_key)
+                                    <option value="{{$permission_key}}" {{$permission_key == $permission->key ? 'selected' : '' }}>{{$permission_key}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <button class="btn btn-danger"  onclick="history.back(); return false;">Cancel</button>
                 </form>
