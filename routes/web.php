@@ -42,6 +42,7 @@ Route::get('/checkout', [App\Http\Controllers\WebControllers\CheckoutController:
 Route::post('/place-order', [App\Http\Controllers\WebControllers\CheckoutController::class, 'PlaceOrder'])->name('place-order');
 // profile setting 
 Route::get('/account/profile', [App\Http\Controllers\WebControllers\ProfileController::class, 'Profile'])->name('profile');
+Route::put('//account/profile/update-data', [App\Http\Controllers\WebControllers\ProfileController::class, 'UpdateData'])->name('profile-update-data-setting');
 Route::get('/account/my-order', [App\Http\Controllers\WebControllers\MyOrderController::class, 'MyOrder'])->name('my-order');
 Route::get('/account/favorite', [App\Http\Controllers\WebControllers\FavoriteController::class, 'Favorite'])->name('favorite');
 Route::get('/account/favorite-add/{id}', [App\Http\Controllers\WebControllers\FavoriteController::class, 'FavoriteAdd'])->name('favorite-add');

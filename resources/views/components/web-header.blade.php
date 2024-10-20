@@ -270,7 +270,7 @@
                 <li class="drodown-show {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->id) ? 'd-block' : 'd-none' }}">
                   <a href="" class="remove d-flex">
                     <div class="avatar avatar-online d-flex align-items-center">
-                      <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/customers/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
+                      <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" alt class="w-px-40 h-auto rounded-circle" />
                       <span class="ml-2 title-user">Welcome <br> 
                       <strong style="width: max-content;display: block;">
                         {{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->name) ? Auth::guard('customer')->user()->name  : '' }}

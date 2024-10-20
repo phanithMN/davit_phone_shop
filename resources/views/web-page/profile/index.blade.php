@@ -25,9 +25,9 @@
               <div class="d-flex justify-content-between align-items-center pb-4 pb-lg-3 mb-lg-3">
                 <h3 class="m-0 p-0" style="font-size: 25px ; color: #144194;">Personal Information</h3>
               </div>
-              <form action="" method="POST" class="" id="avatar-form" enctype="multipart/form-data">
-                <input type="hidden" name="_token" value="h60sEI2PP7A2DU0wokqkPhJ3DFlixjDjcBQGeCn8">
-                <input type="hidden" name="_method" value="PUT">
+              <form id="formAccountSettings" method="post" action="{{ route('profile-update-data-setting')}}" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="bg-secondary rounded-lg p-4 mb-4">
                   <div class="avatar-wrapper">
                     <div class="spinner">
@@ -64,13 +64,13 @@
                           <div class="col-md-4 avatar-source">
                             <div class="btn btn-light btn-upload bg-white">
                               <i class="fa fa-upload"></i>
-                              <input type="file" name="avatar" id="avatar-upload" accept="image/png, image/jpeg">
+                              <input type="file" name="image" id="avatar-upload" accept="image/png, image/jpeg">
                             </div>
                             <p class="mt-3">Upload Photo</p>
                           </div>
                           <div class="col-md-4 avatar-source source-external" data-url="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}">
-                            <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/customers/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" class="rounded-circle img-thumbnail img-responsive">
-                            <p class="mt-3">Google</p>
+                            <img src="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->image) ? asset('uploads/users/' . Auth::guard('customer')->user()->image) : '../assets/img/avatars/1.png'  }}" class="rounded-circle img-thumbnail img-responsive">
+                            <p class="mt-3">Profile</p>
                           </div>
                         </div>
                       </div>
@@ -80,16 +80,6 @@
                   <!-- /.modal-dialog -->
                 </div>
                 <!-- /.modal -->
-                <div class="d-none">
-                  <input type="hidden" name="points[x1]" id="points_x1">
-                  <input type="hidden" name="points[y1]" id="points_y1">
-                  <input type="hidden" name="points[x2]" id="points_x2">
-                  <input type="hidden" name="points[y2]" id="points_y2">
-                </div>
-              </form>
-              <form action="" method="POST" class="" id="profile-form">
-                <input type="hidden" name="_token" value="h60sEI2PP7A2DU0wokqkPhJ3DFlixjDjcBQGeCn8">
-                <input type="hidden" name="_method" value="PUT">
                 <div class="row px-4">
                   <div class="col-sm-6">
                     <div class="form-group">
@@ -109,7 +99,7 @@
                     <div class="form-group">
                       <label for="birthday" class="">Birthday</label>
                       <div class="input-group date" data-provide="datepicker" data-date-format="dd-M-yyyy">
-                        <input type="text" name="birthday" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->dob) ? Auth::guard('customer')->user()->dob : '' }}" placeholder="Enter your birthday" class="form-control " onkeypress="disableInput(event);">
+                        <input type="text" name="dob" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->dob) ? Auth::guard('customer')->user()->dob : '' }}" placeholder="Enter your birthday" class="form-control " onkeypress="disableInput(event);">
                         <div class="input-group-addon">
                           <label class="password-toggle-btn">
                             <i class="bx bx-calendar-alt password-toggle-indicator"></i>
@@ -137,7 +127,7 @@
                     <div class="form-group">
                       <label for="phone" class="">Phone Number</label>
                       <div class="password-toggle">
-                        <input type="text" name="phone" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->phone_number) ? Auth::guard('customer')->user()->phone_number : '' }}" placeholder="Enter your phone number" class="form-control " onkeypress="inputNumber(event);">
+                        <input type="text" name="phone_number" value="{{!is_null(Auth::guard('customer')->user()) && isset(Auth::guard('customer')->user()->phone_number) ? Auth::guard('customer')->user()->phone_number : '' }}" placeholder="Enter your phone number" class="form-control " onkeypress="inputNumber(event);">
                         <div>
                           <label class="password-toggle-btn">
                             <i class="bx bxs-phone password-toggle-indicator"></i>
