@@ -14,7 +14,7 @@ class AddColumnFromAdminsTable extends Migration
     public function up()
     {
         Schema::table('admins', function (Blueprint $table) {
-            $table->bigInteger('role_id');
+            $table->string('username');
         });
     }
 

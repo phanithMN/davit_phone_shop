@@ -6,15 +6,7 @@
           <div class="col-lg-3 pt-4 pt-lg-0">
             <div class="rounded-lg box-shadow-lg px-0 pb-0 mb-5 mb-lg-0 border">
               <div class="px-4 bg-fill rounded-top border-bottom">
-                <div class="media align-items-center py-3">
-                  <div class="img-thumbnail rounded-circle position-relative" style="width: 6.375rem;">
-                    <img class="rounded-circle" src="https://lh3.googleusercontent.com/a/ACg8ocLckUD5FOwZL05AeKEUqcdXv8R90srDuE9jy6WH3LvJWo_zYJlz=s96-c?sz=150" alt="avatar">
-                  </div>
-                  <div class="media-body pl-3">
-                    <h3 class="font-size-base mb-0">MN PHANITH</h3>
-                    <span class="text-accent font-size-sm">phanith.mn@gmail.com</span>
-                  </div>
-                </div>
+                @include('comons.header-setting')
               </div>
               <div>
                 @include('comons.menu-side-seeting')
