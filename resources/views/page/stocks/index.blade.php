@@ -46,7 +46,6 @@
                     <th style="width: 1%">#</th>
                     <th style="width: 1%">SKU</th>
                     <th style="width: 1%">Product</th>
-                    <th>Name</th>
                     <th>Quantity</th>
                     <th>Price</th>
                     <th>Action</th>
@@ -58,7 +57,6 @@
                   <td>{{$key}}</td>
                   <td>{{$stock->sku}}</td>
                   <td>{{$stock->product_name}}</td>
-                  <td>{{$stock->item_name}}</td>
                   <td>{{$stock->quantity}}</td>
                   <td>${{$stock->price}}</td>
                   <td>
