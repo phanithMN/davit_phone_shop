@@ -20,7 +20,7 @@
           <form method="POST" action="{{ route('customer.register.submit') }}" class="mb-3" enctype="multipart/form-data">
             @csrf
             <div class="row">
-              <div class="mb-3 form-password-toggle col-lg-12">
+              <!-- <div class="mb-3 form-password-toggle col-lg-12">
                   <label for="image">Image</label>
                   <input
                       type="file"
@@ -31,7 +31,7 @@
                   @error('image')
                       <span>{{ $message }}</span>
                   @enderror
-              </div>
+              </div> -->
               <div class="mb-3 form-password-toggle col-lg-6">
                   <label for="name">Name</label>
                   <input type="text" name="name" id="name" class="form-control" placeholder="input name">
