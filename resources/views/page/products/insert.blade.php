@@ -25,7 +25,7 @@
                                         class="form-control"
                                         id="name"
                                         placeholder="Insert Name"
-                                        
+                                        required
                                     />
                                 </div>
                                 @error('name')
@@ -244,7 +244,7 @@
                     </div>
                 </div>
             </div>
-            <h4 class="fw-bold py-2">Add Info Product</h4>
+            <!-- <h4 class="fw-bold py-2">Add Info Product</h4>
             <div class="col-lg-6">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
@@ -266,7 +266,7 @@
                         <div id="inputContainer2"></div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- button  -->
             <div class="col-lg-12">
